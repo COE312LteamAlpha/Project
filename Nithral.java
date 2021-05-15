@@ -1,4 +1,4 @@
-package proj1;
+package Project;
 
 public class Nithral extends Characters {
 	
@@ -17,6 +17,10 @@ public class Nithral extends Characters {
 	}
 	public void dialogueDefeat() {
 		
+	}
+	
+	public synchronized int getHealth() {
+		return this.health_level;
 	}
 
 }

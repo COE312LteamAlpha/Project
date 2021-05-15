@@ -1,4 +1,4 @@
-package proj1;
+package Project;
 
 public abstract class Characters {
 	String name;

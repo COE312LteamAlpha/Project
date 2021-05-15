@@ -1,4 +1,4 @@
-package proj1;
+package Project;
 
 public class Kaer_Morhen implements Locations{
 

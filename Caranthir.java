@@ -1,5 +1,5 @@
-package proj1;
+package Project;
 
-public class Caranthir {
+public class Caranthir extends Characters{
 
 }

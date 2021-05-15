@@ -1,4 +1,4 @@
-package proj1;
+package Project;
 
 public class Player extends Characters{
 
@@ -32,6 +32,10 @@ public class Player extends Characters{
 	public void dialogueDefeat() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public synchronized int getHealth() {
+		return this.health_level;
 	}
 	
 }

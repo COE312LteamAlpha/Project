@@ -1,23 +1,25 @@
-package proj1;
+package Project;
 
-public class BattleDuo implements Runnable{
+public class BattleDuo{
 
 	String p1,p2;
 	boolean currMove;
-	EnemyFight eF;
 	Player p;
-	BattleDuo(Player p1,EnemyFight p2){
+	Characters boss;
+	public BattleDuo(Player p1, Characters boss){
 		this.p=p1;
-		this.eF=p2;
-		Thread t = new Thread(this);
-		t.start();
+		this.boss = boss;
 	}
 	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	
+	public synchronized void AttackEnemy() {
+		boss.health_level -= p.attack_level;
+		// add phone swipe stuff
 	}
-
+	
+	public synchronized void AttackPlayer() {
+		p.health_level -= boss.attack_level;
+	}
+	
 	
 }
