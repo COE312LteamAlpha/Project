@@ -27,22 +27,40 @@ public class The_Cave implements Locations{
 		//Scanner scan = new Scanner(System.in);
 		while(!scan.next().equals("exit")) {
 			if(scan.nextInt() == 1) {
+				if(p.coins - 15 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
 				p.attack_level += 20;
 				p.health_level += 50;
 				p.coins -= 15;
 				System.out.println("Coins left: " + p.coins);
+				}
 			}
 			else if(scan.nextInt() == 2) {
+				if(p.coins - 25 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
 				System.out.println("Coins left: " + p.coins);
+				}
 			}
 			else if(scan.nextInt() == 3) {
+				if(p.coins - 35 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
 				System.out.println("Coins left: " + p.coins);
+				}
 			}
 			else {
 				System.out.println("Enter from the given options");
@@ -62,10 +80,24 @@ public class The_Cave implements Locations{
 		+"\nEnter half or full");
 		while(!scan.next().equals("exit")) {
 			if(scan.next().equals("half")) {
+				if(p.coins - 5 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
 				p.health_level += (currMaxHP/2); 
+				p.coins -= 5;
+				}
 			}
 			else if(scan.next().equals("full")) {
+				if(p.coins - 10 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
 				p.health_level += currMaxHP; 
+				p.coins -= 10;
+				}
 			}
 			else {
 				System.out.println("Enter from the given options");

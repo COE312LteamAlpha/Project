@@ -5,7 +5,7 @@ public class Nithral extends Characters {
 	public Nithral(String name) {
 		this.name = name;
 		this.health_level = 200;
-		this.attack_level = 15;
+		this.attack_level = 40;
 		this.bonus_attack = 10;
 	}
 	

@@ -9,9 +9,9 @@ public class Player extends Characters{
 	int coins;
 	public Player(String name) {
 		this.name = name;
-		this.health_level = 100;
-		this.attack_level = 10;
-		this.bonus_attack = 25;
+		this.health_level = 250;
+		this.attack_level = 75;
+		this.bonus_attack = 15;
 		this.coins=50;
 	}
 
