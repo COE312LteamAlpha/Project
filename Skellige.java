@@ -6,12 +6,12 @@ public class Skellige implements Locations{
 
 	Player p;
 	int currMaxHP;
-	Eredin er;
+	Eredin er = new Eredin();
 	Scanner scan = new Scanner(System.in);
-	Skellige(Player p, Eredin er)
+	Skellige(Player p)
 	{
 		this.p=p;
-		this.er=er;
+		//this.er=er;
 		this.currMaxHP = p.health_level;
 	}
 	@Override
@@ -123,6 +123,12 @@ public class Skellige implements Locations{
 	public void goForth() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void goBack() {
+		// TODO Auto-generated method stub
+		System.out.println("now entering The Ice Mountain");
+		UI.curLoc="The Ice Mountain";
 	}
 	
 

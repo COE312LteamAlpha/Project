@@ -2,11 +2,11 @@ package Project;
 
 public class Eredin extends Characters{
 
-	public Eredin(String name) {
-		this.name = name;
+	public Eredin() {
 		this.health_level = 1000;
 		this.attack_level = 100;
 		this.bonus_attack = 20;
+		this.isAlive=true;
 	}
 	
 	@Override

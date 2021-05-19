@@ -5,7 +5,7 @@ public class UserFight implements Runnable {
 	Player p;
 	Characters boss;
 	BattleDuo battle;
-	boolean done;
+	boolean done=false;
 	
 	public UserFight(Player p,Nithral n) {
 		this.p=p;
@@ -36,6 +36,9 @@ public class UserFight implements Runnable {
 			if(p.health_level == 0) {
 				System.out.println("Player lost!");
 				done = true;
+			}
+			else if(Watch.timer == 0) {
+				done=true;
 			}
 			else
 			{

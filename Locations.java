@@ -7,4 +7,5 @@ public interface Locations {
 	public boolean battles();
 	public void lookAround();
 	public void goForth();
+	public void goBack();
 }

@@ -13,9 +13,11 @@ public class The_Cave implements Locations{
 		this.p=p;
 		this.n=n;
 		this.currMaxHP = p.health_level;
+		lookAround();
 	}
 	
 	@Override
+	
 	public void L_right() {
 		// TODO Auto-generated method stub
 		System.out.println("The Armourer");
@@ -130,10 +132,28 @@ public class The_Cave implements Locations{
 			System.out.println("Here's Nithral!!");
 		UserFight uF = new UserFight(p,n);
 		EnemyFight eF = new EnemyFight(p,n);
+		if(uF.done == true) {
+			//lost to Nithral
+		}
+		else if(eF.done == true) {
+			//won against Nithral
+			p.health_level+= 10;
+			p.attack_level+= 10;
+		}
 			}
 		else {
 			//goto location 2
+			System.out.println("now entering The Ice Mountain");
+			UI.curLoc = "The Ice Mountain";
+
 		}
+	}
+
+	@Override
+	public void goBack() {
+		// TODO Auto-generated method stub
+		System.out.println("now entering Kaer Morhen");
+		UI.curLoc = "Kaer Morhen";
 	}
 
 }
