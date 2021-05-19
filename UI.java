@@ -1,5 +1,10 @@
 package Project;
 
-public class UI {
+public class UI implements Runnable{
 
+	
+	
+	
+	
+	public void run() {}
 }

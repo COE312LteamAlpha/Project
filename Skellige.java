@@ -114,6 +114,16 @@ public class Skellige implements Locations{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public void lookAround() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void goForth() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

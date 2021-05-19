@@ -20,4 +20,16 @@ public class Kaer_Morhen implements Locations{
 		return false;
 	}
 
+	@Override
+	public void lookAround() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void goForth() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

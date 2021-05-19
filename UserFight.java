@@ -3,30 +3,38 @@ package Project;
 public class UserFight implements Runnable {
 
 	Player p;
-	int extraHealth;
-	int extraAttack;
 	Characters boss;
+	BattleDuo battle;
 	boolean done;
 	
-	public UserFight(Player p, int extraHealth, int extraAttack, Characters boss) {
+	public UserFight(Player p,Nithral n) {
 		this.p=p;
-		this.extraAttack = extraAttack;
-		this.extraHealth=extraHealth;
-		this.boss = boss;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
+	}
+	public UserFight(Player p,Caranthir n) {
+		this.p=p;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
+	}
+	public UserFight(Player p,Eredin n) {
+		this.p=p;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
 		Thread t1 = new Thread(this);
 		t1.start();
 	}
 	
-	BattleDuo battle = new BattleDuo(p, boss);
-
-	public synchronized void Ufight(boolean currMove) {
-		
-	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(!done) {
 			if(p.health_level == 0) {
+				System.out.println("Player lost!");
 				done = true;
 			}
 			else

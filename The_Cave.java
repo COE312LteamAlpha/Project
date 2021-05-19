@@ -7,12 +7,14 @@ public class The_Cave implements Locations{
 	Player p;
 	int currMaxHP;
 	Nithral n;
+
 	Scanner scan = new Scanner(System.in);
 	The_Cave(Player p, Nithral n){
 		this.p=p;
 		this.n=n;
 		this.currMaxHP = p.health_level;
 	}
+	
 	@Override
 	public void L_right() {
 		// TODO Auto-generated method stub
@@ -109,7 +111,29 @@ public class The_Cave implements Locations{
 	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
+		
 		return false;
+	}
+
+	@Override
+	public void lookAround() {
+		// TODO Auto-generated method stub
+		System.out.println("To the right there's an Armourer, and to the left theres a Healer."
+				+ " And to theres an odd force to the front" + "\n\t (You can go right, left or forth)");
+	}
+
+	@Override
+	public void goForth() {
+		// TODO Auto-generated method stub
+		
+		if(n.isAlive == true){
+			System.out.println("Here's Nithral!!");
+		UserFight uF = new UserFight(p,n);
+		EnemyFight eF = new EnemyFight(p,n);
+			}
+		else {
+			//goto location 2
+		}
 	}
 
 }

@@ -2,40 +2,44 @@ package Project;
 
 public class EnemyFight implements Runnable{
 
-	Nithral n;
-	Caranthir c;
-	Eredin e;
-	Characters boss;
+	BattleDuo battle;
 	Player p;
-	
+	Characters boss;
 	int health;
 	
 	boolean done = false;
 	
-	EnemyFight(Nithral n, Player p){
+	public EnemyFight(Player p,Nithral n) {
+		this.p=p;
+		this.boss = n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
+	}
+	public EnemyFight(Player p,Caranthir n) {
+		this.p=p;
 		this.boss=n;
-		this.health = n.health_level;
-		this.p = p;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
 	}
-	EnemyFight(Caranthir c){
-		this.boss = c;
-		this.health = c.health_level;
-		this.p = p;
+	public EnemyFight(Player p,Eredin n) {
+		this.p=p;
+		this.boss=n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
 	}
-	EnemyFight(Eredin e){
-		this.boss=e;
-		this.health = e.health_level;
-		this.p = p;
-	}
-	
-	BattleDuo battle = new BattleDuo(p, boss);
-	
-	
 	
 	public void run() {
 		while(!done) {
 			if(boss.health_level == 0)
 			{
+				System.out.println("Enemy lose!");//gotta improve this
+				boss.isAlive=false;
 				done = true;
 			}
 			else
