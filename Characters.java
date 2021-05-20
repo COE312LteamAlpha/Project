@@ -8,9 +8,9 @@ public abstract class Characters {
 	int bonus_attack;
 	
 	public Characters() {	}
-	public abstract void dialogueIntro();
-	public abstract void dialogueVictory();
-	public abstract void dialogueDefeat();
+	public abstract void dialogueIntro(String currLoc);
+	public abstract void dialogueVictory(String currLoc);
+	public abstract void dialogueDefeat(String currLoc);
 	
 	
 }

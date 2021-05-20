@@ -13,6 +13,10 @@ public class BattleDuo{
 		this.p=p1;
 		this.boss = e;
 	}
+	public BattleDuo(Player p1, AngryEredin ae){
+		this.p=p1;
+		this.boss = ae;
+	}
 	public BattleDuo(Player p1, Caranthir c){
 		this.p=p1;
 		this.boss = c;

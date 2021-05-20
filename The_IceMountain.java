@@ -7,6 +7,7 @@ public class The_IceMountain implements Locations {
 
 	Player p;
 	int currMaxHP;
+	String curLoc;
 	Caranthir c = new Caranthir();
 	Scanner scan = new Scanner(System.in);
 	The_IceMountain(Player p){
@@ -238,6 +239,8 @@ public class The_IceMountain implements Locations {
 	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
+		p.dialogueIntro(curLoc);
+		c.dialogueIntro(curLoc);
 		return false;
 	}
 

@@ -6,6 +6,7 @@ public class Skellige implements Locations{
 
 	Player p;
 	int currMaxHP;
+	String curLoc;
 	Eredin er = new Eredin();
 	Scanner scan = new Scanner(System.in);
 	Skellige(Player p)
@@ -50,6 +51,7 @@ public class Skellige implements Locations{
 				p.attack_level += 20;
 				p.health_level += 50;
 				p.coins -= 15;
+				p.armor = 1;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -62,6 +64,7 @@ public class Skellige implements Locations{
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
+				p.armor = 2;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -74,6 +77,7 @@ public class Skellige implements Locations{
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
+				p.armor = 3;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -137,6 +141,8 @@ public class Skellige implements Locations{
 	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
+		p.dialogueIntro(curLoc);
+		er.dialogueIntro(curLoc);
 		return false;
 	}
 	@Override

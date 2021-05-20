@@ -17,13 +17,13 @@ public class Driver {
 		Kaer_Morhen kM = new Kaer_Morhen();
 		The_IceMountain tIM = new The_IceMountain(player);
 		Skellige sK = new Skellige(player);
-		new TCP_C("192.168.100.40", 49395);
+		//new TCP_C("192.168.100.40", 49395);
 			
 			System.out.println("Game begins: " + "\nPlayer stats: "
 			+"Attack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
 			System.out.println("Goto \nOptions:Kaer Morhen\tThe Cave\tThe Ice Mountain\tSkellige");
-			String enter = sc.nextLine().toLowerCase();
-			if(enter.equals("the cave")) {
+			String enter = sc.next();
+			if(enter.equalsIgnoreCase("the cave")) {
 				System.out.println("The Cave");
 				curLoc = "The Cave";
 				tC.lookAround();
@@ -36,7 +36,7 @@ public class Driver {
 			else if(enter.equalsIgnoreCase("the ice mountain") || enter.equalsIgnoreCase("Skellige")) {
 				//if-else if location is unlocked
 			}
-			new TCP_C("192.168.100.40", 49395);
+			new TCP_C("192.168.1.102", 50807);
 			String entry1=sc.next();
 			while(!entry1.equalsIgnoreCase("exit")) {
 				
