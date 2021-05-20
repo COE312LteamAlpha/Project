@@ -7,6 +7,7 @@ public class The_IceMountain implements Locations {
 
 	Player p;
 	int currMaxHP;
+	String curLoc;
 	Caranthir c = new Caranthir();
 	Scanner scan = new Scanner(System.in);
 	The_IceMountain(Player p){
@@ -127,7 +128,7 @@ public class The_IceMountain implements Locations {
 				+ "\n2. Manticore Gear Upgrade Set - 9 coins \t Spell bonus: +12 \tHealth: +7"
 				+ "\n3. Ursine Gear Upgrade Set - 15 coins \t Attack: +15 \tHealth: +15"
 				+ "\n4. Sword(10% Damage) - 20 coins"
-				+ "\n5. Twohanded Sword (5% Damage) - 10 coins"
+				+ "\n5. Two-handed Sword (5% Damage) - 10 coins"
 				+ "\nEnter option number to select \tType 6 to leave:");
 		while(true) {
 			int option = scan.nextInt();
@@ -199,9 +200,17 @@ public class The_IceMountain implements Locations {
 		UserFight uF = new UserFight(p,c,wT);
 		EnemyFight eF = new EnemyFight(p,c);
 		p.health_level = currMaxHP;
+		try {
+			uF.get_thread().join();
+			eF.get_thread().join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(uF.done == true) {
 			//lost to Caranthir
-			
+			c.dialogueVictory(null);
+			p.dialogueDefeat(null);
 			p.health_level = pHP;
 		}
 		else if(eF.done == true) {
@@ -209,6 +218,8 @@ public class The_IceMountain implements Locations {
 			p.health_level+= 15;
 			p.attack_level+= 15;
 			p.coins+= 100;
+			p.dialogueVictory(null);
+			c.dialogueDefeat(null);
 			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
 			The_Cave.curLoc = "Skellige";
@@ -219,6 +230,34 @@ public class The_IceMountain implements Locations {
 			//goto location 3
 			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
+			System.out.println("            .        +          .      .          .\r\n"
+					+ "     .            _        .                    .\r\n"
+					+ "  ,              /;-._,-.____        ,-----.__\r\n"
+					+ " ((        .    (_:#::_.:::. `-._   /:, /-._, `._,\r\n"
+					+ "  `                 \\   _|`\"=:_::.`.);  \\ __/ /\r\n"
+					+ "                      ,    `./  \\:. `.   )==-'  .\r\n"
+					+ "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\r\n"
+					+ ".           \\/:/`-' , ,\\ '` ` `   ): , /_  -o\r\n"
+					+ "       .    /:+- - + +- : :- + + -:'  /(o-) \\)     .\r\n"
+					+ "  .      ,=':  \\    ` `/` ' , , ,:' `'--\".--\"---._/`7\r\n"
+					+ "   `.   (    \\: \\,-._` ` + '\\, ,\"   _,--._,---\":.__/\r\n"
+					+ "              \\:  `  X` _| _,\\/'   .-'\r\n"
+					+ ".               \":._:`\\____  /:'  /      .           .\r\n"
+					+ "                    \\::.  :\\/:'  /              +\r\n"
+					+ "   .                 `.:.  /:'  }      .\r\n"
+					+ "           .           ):_(:;   \\           .\r\n"
+					+ "                      /:. _/ ,  |\r\n"
+					+ "                   . (|::.     ,`                  .\r\n"
+					+ "     .                |::.    {\\\r\n"
+					+ "                      |::.\\  \\ `.\r\n"
+					+ "                      |:::(\\    |\r\n"
+					+ "              O       |:::/{ }  |                  (o\r\n"
+					+ "               )  ___/#\\::`/ (O \"==._____   O, (O  /`\r\n"
+					+ "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\r\n"
+					+ "dew   ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~\r\n"
+					+ "\r\n"
+					+ "------------------------------------------------\r\n"
+					+ "");
 			The_Cave.curLoc = "Skellige";
 			sK.lookAround();
 		}

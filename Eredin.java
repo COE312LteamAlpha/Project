@@ -29,7 +29,7 @@ public class Eredin extends Characters{
 	@Override
 	public void dialogueDefeat(String s) {
 		// TODO Auto-generated method stub
-		System.out.println("Impossible...! I've been bested by your stupid feints and pirouettes...How pathetic..");
+		System.out.println("Impossible...! I've been bested by your worthless feints and pirouettes...How pathetic..");
 		
 	}
 	

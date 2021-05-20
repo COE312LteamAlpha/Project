@@ -7,6 +7,7 @@ public class Skellige implements Locations{
 	Player p;
 	int currMaxHP;
 	Eredin er = new Eredin();
+	String curLoc;
 	Scanner scan = new Scanner(System.in);
 	Skellige(Player p)
 	{
@@ -32,7 +33,16 @@ public class Skellige implements Locations{
 	public void L_right() {
 		// TODO Auto-generated method stub
 		System.out.println("The Armourer");
-		
+		System.out.println(" .-------..___\r\n"
+				+ "  '-._     :_.-'\r\n"
+				+ "   .- ) _ ( --.\r\n"
+				+ "  :  '-' '-'  ;.\r\n"
+				+ " /'-.._____.-' |\r\n"
+				+ " |   |     \\   |\r\n"
+				+ " \\   |     /   \\\r\n"
+				+ " |   \\     )_.-'LGB\r\n"
+				+ " '-._/__..-'\r\n"
+				+ "");
 		System.out.println("You can purchase armour sets from here: "
 		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
 		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +15 \tHealth: +75"
@@ -90,7 +100,21 @@ public class Skellige implements Locations{
 	@Override
 	public void L_left() {
 		// TODO Auto-generated method stub
-		System.out.println("The Healer" + "\n The healer will either increase your health by half or fully."
+		System.out.println("The Healer" 
+				+ "   _____\r\n"
+				+ "     `.___,'\r\n"
+				+ "      (___)\r\n"
+				+ "      <   >\r\n"
+				+ "       ) (\r\n"
+				+ "      /`-.\\\r\n"
+				+ "     /     \\\r\n"
+				+ "    / _    _\\\r\n"
+				+ "   :,' `-.' `:\r\n"
+				+ "   |         |\r\n"
+				+ "   :         ;\r\n"
+				+ "    \\       /\r\n"
+				+ "     `.___.' "
+				+ "\n The healer will either increase your health by half or fully."
 				+ "\nHalf recovery - 5 coins"
 				+ "\tFull recovery - 10 coins"
 				+"\nEnter half or full\t Enter exit to leave");
@@ -146,15 +170,29 @@ public class Skellige implements Locations{
 		// TODO Auto-generated method stub
 		int pHP = p.health_level;
 		if(er.isAlive == true){
-			System.out.println("Here's Eredin!");
+			System.out.println("The final obstacle between the protection of countless human lives and "
+					+"\n the safety of the princess lies before you...the commander himself, Eredin. His "
+					+"\n ominous aura speaks for itself and an experienced Witcher such as yourself who "
+					+"\n many consider the most reliable and skilled in all the lands seems to be cautious."
+					+"\n His armor seemd sturdy yet agile, and his magical abilities dwarved all those you've"
+					+"\n faced thus far. This was it! The final battle!");
 			p.dialogueIntro(The_Cave.curLoc);
 			er.dialogueIntro(The_Cave.curLoc);
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,er,wT);
 		EnemyFight eF = new EnemyFight(p,er);
 		p.health_level = currMaxHP;
+		try {
+			uF.get_thread().join();
+			eF.get_thread().join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(uF.done == true) {
 			//lost to Eredin
+			er.dialogueVictory(curLoc);
+			p.dialogueDefeat(curLoc);
 			p.health_level = pHP;
 		}
 		else if(eF.done == true) {
@@ -162,7 +200,13 @@ public class Skellige implements Locations{
 			p.health_level+= 15;
 			p.attack_level+= 15;
 			p.coins+= 100;
+			System.out.println("The winner of this battle seemed to have been decided! But Eredin refused"
+					+"\n to lie down, pushing himself to his absolute limit to take one last stand! "
+					+"\n But he ultimately succumbed to his wounds and falls on his back.");
+			p.dialogueVictory(curLoc);
+			er.dialogueDefeat(curLoc);
 			//add ending story
+			
 		}
 			}
 		else {}

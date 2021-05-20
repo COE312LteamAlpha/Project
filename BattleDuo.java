@@ -9,12 +9,12 @@ public class BattleDuo{
 	public BattleDuo(Player p1, Nithral n){
 		this.p=p1;
 		this.boss = n;
-		tcp = new TCP_C("192.168.100.40", 49395,this);
+		tcp = new TCP_C("192.168.1.102", 50807,this);
 	}
 	public BattleDuo(Player p1, Eredin e){
 		this.p=p1;
 		this.boss = e;
-		tcp = new TCP_C("192.168.100.40", 49395,this);
+		tcp = new TCP_C("192.168.1.102", 50807,this);
 	}
 	public BattleDuo(Player p1, AngryEredin ae){
 		this.p=p1;
@@ -23,11 +23,11 @@ public class BattleDuo{
 	public BattleDuo(Player p1, Caranthir c){
 		this.p=p1;
 		this.boss = c;
-		tcp = new TCP_C("192.168.100.40", 49395,this);
+		tcp = new TCP_C("192.168.1.102", 50807,this);
 	}
 	public void spellAttack() {
 		boss.health_level -= p.bonus_attack;
-		System.out.println("Igni !! \tBoss HP:"+ boss.health_level);
+		System.out.println("You used the damage spell Igni!! \tBoss HP:"+ boss.health_level);
 	}
 	public void comboAttack() {
 		boss.health_level -= (p.bonus_attack + p.attack_level);

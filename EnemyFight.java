@@ -8,6 +8,7 @@ public class EnemyFight implements Runnable{
 	Player p;
 	Characters boss;
 	int health;
+	Thread t1;
 	Random rand = new Random();
 	boolean done = false;
 	
@@ -16,7 +17,7 @@ public class EnemyFight implements Runnable{
 		this.boss = n;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
-		Thread t1 = new Thread(this);
+		t1 = new Thread(this);
 		t1.start();
 	}
 	public EnemyFight(Player p,Caranthir n) {
@@ -24,7 +25,7 @@ public class EnemyFight implements Runnable{
 		this.boss=n;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
-		Thread t1 = new Thread(this);
+		t1 = new Thread(this);
 		t1.start();
 	}
 	public EnemyFight(Player p,Eredin n) {
@@ -32,15 +33,19 @@ public class EnemyFight implements Runnable{
 		this.boss=n;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
-		Thread t1 = new Thread(this);
+		t1 = new Thread(this);
 		t1.start();
+	}
+	
+	public Thread get_thread() {
+		return t1;
 	}
 	
 	public void run() {
 		while(!done) {
 			if(boss.health_level <= 0)
 			{
-				System.out.println("Enemy lose!");//gotta improve this
+				System.out.println("You have defeated your opponent!");//gotta improve this
 				boss.isAlive=false;
 				done = true;
 			}

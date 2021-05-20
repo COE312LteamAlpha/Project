@@ -19,6 +19,37 @@ public class Driver {
 
 		System.out.println("Welcome " + pname+ "!\n\t\tGame begins: " + "\nPlayer stats: "+ "\tCoins:"+player.coins
 				+"\tAttack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
+		System.out.println("You are a Witcher. A human weapon who has gone through immense mutations and training to be strong"
+				+ "\n enough to take on deadly monsters single handely. You've been tasked with eliminating three other worldly "
+				+ "\n elves who threaten to" +
+				" wipe out humanity unless they submit into sacrificing their royal elder-blooded princess "
+				+ "\n for the selfish motives of the elven race." + 
+				"Having known the princess personally and caring for her safety, "
+				+ "\n you agree to the mission handed out to you by the king.");
+		System.out.println("*                               \r\n"
+				+ "       .(/        */%#**                \r\n"
+				+ "   *&     %       ,/(/*,                \r\n"
+				+ "     #.    %(   / ,,/((,#               \r\n"
+				+ "       &     %,(  **,#((/               \r\n"
+				+ "        ## #&%(/*&(#%%(((*%/            \r\n"
+				+ "       #/%/&&&%&(/#&@@@&(%@%&#(/        \r\n"
+				+ "      #%%%%&(%&&&,*(@%&(&&&@&&&%##//    \r\n"
+				+ "      ##&#&#%##((##/*,(#(%%@@##%(&&/    \r\n"
+				+ "     *%@&@@(%%#%@#(#@@@(##%%%(@@@@&&    \r\n"
+				+ "     #&&@@@#%@(&&@(%@&%%%&&%(#@&@#@%#   \r\n"
+				+ "    *&@&&&@&##&&@@@@@#&@@@&&#&@@&&(&&/  \r\n"
+				+ "    ,(#&@@&&@%#%&&&&%&&@@&%&%@@@@&&#*,  \r\n"
+				+ "  ,.%%&#    &#*%@@&@@@@@@&%#(.   /&%**, \r\n"
+				+ "  ,/%&&#    *(##&&&&&@@&@&(#(    .#%%#/.\r\n"
+				+ " *##&&&/    &#(#%&&&&@@&&&(#(&/  /&@@%#%\r\n"
+				+ " (%&&&%    #(#/%&%%&&&&&&&(/(%,% .&@@&%%\r\n"
+				+ " %%&&%      &&&&&&&&&&(%#&%(/## @*&@@@&#\r\n"
+				+ " #%#%*    %##&&&&&&%%%&&&&&&#(%/  ,@@@& \r\n"
+				+ " ((###*    &&%.%&%%%&&&&&&&%(#&  ((%&&% \r\n"
+				+ " ((%..%%  /%#%%%%%%%%%%%%%%%(((. *#&&&# \r\n"
+				+ "  (#%#%/ ,%%%%%/#%%% /%########% &&%*%  \r\n"
+				+ "          #%#//####*  #######((% (%%%(  \r\n"
+				+ "          #######%#    ######,#% #%#((");
 		//System.out.println("Goto \nOptions:Kaer Morhen\tThe Cave\tThe Ice Mountain\tSkellige");
 		//String enter = sc.nextLine();
 		//enter = enter.toLowerCase();
@@ -33,7 +64,7 @@ public class Driver {
 				//if-else if location is unlocked
 				System.out.println("Cannot travel there yet!");
 			}*/
-		System.out.println("Now traveling to The Cave");
+		System.out.println("\n Now traveling to The Cave");
 		curLoc = "The Cave";
 		tC.lookAround();
 		String[] commands = {"right","left","forth","back","quit","stats","use"};
@@ -42,7 +73,8 @@ public class Driver {
 			boolean checkCom = false;
 			for(int i=0;i<commands.length;i++) {
 				if(entry1.equals(commands[i])) {
-					checkCom = true;break;
+					checkCom = true;
+					break;
 				}
 			}
 
@@ -72,7 +104,7 @@ public class Driver {
 				}
 			}
 			else {
-				System.out.print("Enter valid command");
+				//System.out.print("Enter valid command");
 			}
 		}
 

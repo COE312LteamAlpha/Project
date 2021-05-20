@@ -32,6 +32,16 @@ public class The_Cave implements Locations{
 	public void L_right() {
 		// TODO Auto-generated method stub
 		System.out.println("The Armourer");
+		System.out.println(" .-------..___\r\n"
+				+ "  '-._     :_.-'\r\n"
+				+ "   .- ) _ ( --.\r\n"
+				+ "  :  '-' '-'  ;.\r\n"
+				+ " /'-.._____.-' |\r\n"
+				+ " |   |     \\   |\r\n"
+				+ " \\   |     /   \\\r\n"
+				+ " |   \\     )_.-'LGB\r\n"
+				+ " '-._/__..-'\r\n"
+				+ "");
 		
 		System.out.println("You can purchase armour sets from here: "
 		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
@@ -94,7 +104,21 @@ public class The_Cave implements Locations{
 	@Override
 	public void L_left() {
 		// TODO Auto-generated method stub
-		System.out.println("The Healer" + "\n The healer will either increase your health by half or fully."
+		System.out.println("The Healer" + 
+		"   _____\r\n"
+		+ "     `.___,'\r\n"
+		+ "      (___)\r\n"
+		+ "      <   >\r\n"
+		+ "       ) (\r\n"
+		+ "      /`-.\\\r\n"
+		+ "     /     \\\r\n"
+		+ "    / _    _\\\r\n"
+		+ "   :,' `-.' `:\r\n"
+		+ "   |         |\r\n"
+		+ "   :         ;\r\n"
+		+ "    \\       /\r\n"
+		+ "     `.___.' "
+		+		"\n The healer will either increase your health by half or fully."
 		+ "\nHalf recovery - 5 coins"
 		+ "\tFull recovery - 10 coins"
 		+"\nEnter half or full\t Enter exit to leave");
@@ -156,16 +180,39 @@ public class The_Cave implements Locations{
 		// TODO Auto-generated method stub
 		int pHP = p.health_level;
 		if(n.isAlive == true){
-			System.out.println("Here's Nithral!!");
+			System.out.println("Deep into the cave, you see the first general you must defeat on your"
+					+"\n journey. You must eliminate everyone who leads the elven army. With your final"
+					+ "\n target being the commander of the army himself, Eredin. The First General, Nithral "
+					+"\nstands before you. He holds a long axe and seems well protected in his elven armor."
+					);
+			System.out.println("Nithral: You must be the witcher who seems to be culling our forces.."
+					+"\n how very interesting.");
+			System.out.println("He mutters something that sounds like elven speech. Both of you get ready "
+					+"\n and assume your battle stances.");
 			p.dialogueIntro(curLoc);
 			n.dialogueIntro(curLoc);
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,n,wT);
 		EnemyFight eF = new EnemyFight(p,n);
 		p.health_level = currMaxHP;
+		try {
+			uF.get_thread().join();
+			eF.get_thread().join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(uF.done == true) {
 			//lost to Nithral
 			p.health_level = pHP;
+			/*try {
+				wT.wait(10000000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			n.dialogueVictory(curLoc);
+			p.dialogueDefeat(curLoc);
 		}
 		else if(eF.done == true) {
 			//won against Nithral
@@ -173,15 +220,32 @@ public class The_Cave implements Locations{
 			p.health_level+= 10;
 			p.attack_level+= 10;
 			p.coins+= 75;
+			p.dialogueVictory(curLoc);
+			n.dialogueDefeat(curLoc);
 			System.out.println("now entering The Ice Mountain");
 			curLoc = "The Ice Mountain";
 			The_IceMountain iM = new The_IceMountain(p);
 			iM.lookAround();
 		}
+		//else {System.out.println("check2");}
 			}
 		else {
 			//goto location 2
 			System.out.println("now entering The Ice Mountain");
+			System.out.println(" .                  .-.    .  _   *     _   .\r\n"
+					+ "           *          /   \\     ((       _/ \\       *    .\r\n"
+					+ "         _    .   .--'\\/\\_ \\     `      /    \\  *    ___\r\n"
+					+ "     *  / \\_    _/ ^      \\/\\'__        /\\/\\  /\\  __/   \\ *\r\n"
+					+ "       /    \\  /    .'   _/  /  \\  *' /    \\/  \\/ .`'\\_/\\   .\r\n"
+					+ "  .   /\\/\\  /\\/ :' __  ^/  ^/    `--./.'  ^  `-.\\ _    _:\\ _\r\n"
+					+ "     /    \\/  \\  _/  \\-' __/.' ^ _   \\_   .'\\   _/ \\ .  __/ \\\r\n"
+					+ "   /\\  .-   `. \\/     \\ / -.   _/ \\ -. `_/   \\ /    `._/  ^  \\\r\n"
+					+ "  /  `-.__ ^   / .-'.--'    . /    `--./ .-'  `-.  `-. `.  -  `.\r\n"
+					+ "@/        `.  / /      `-.   /  .-'   / .   .'   \\    \\  \\  .-  \\%\r\n"
+					+ "@&8jgs@@%% @)&@&(88&@.-_=_-=_-=_-=_-=_.8@% &@&&8(8%@%8)(8@%8 8%@)%\r\n"
+					+ "@88:::&(&8&&8:::::%&`.~-_~~-~~_~-~_~-~~=.'@(&%::::%@8&8)::&#@8::::\r\n"
+					+ "`::::::8%@@%:::::@%&8:`.=~~-.~~-.~~=..~'8::::::::&@8:::::&8:::::'\r\n"
+					+ " `::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.'");
 			curLoc = "The Ice Mountain";
 			The_IceMountain iM = new The_IceMountain(p);
 			iM.lookAround();
