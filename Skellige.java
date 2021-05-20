@@ -6,7 +6,6 @@ public class Skellige implements Locations{
 
 	Player p;
 	int currMaxHP;
-	String curLoc;
 	Eredin er = new Eredin();
 	Scanner scan = new Scanner(System.in);
 	Skellige(Player p)
@@ -16,16 +15,16 @@ public class Skellige implements Locations{
 		this.currMaxHP = p.health_level;
 	}
 	public void goTo(String loc) {
-		if(loc=="right") {
+		if(loc.equals("right")) {
 			L_right();
 		}
-		else if(loc=="left") {
+		else if(loc.equals("left")) {
 			L_left();
 		}
-		else if(loc=="front") {
+		else if(loc.equals("forth")) {
 			goForth();
 		}
-		else if(loc=="back") {
+		else if(loc.equals("back")) {
 			goBack();
 		}
 	}
@@ -51,7 +50,6 @@ public class Skellige implements Locations{
 				p.attack_level += 20;
 				p.health_level += 50;
 				p.coins -= 15;
-				p.armor = 1;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -64,7 +62,6 @@ public class Skellige implements Locations{
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
-				p.armor = 2;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -77,7 +74,6 @@ public class Skellige implements Locations{
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
-				p.armor = 3;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
@@ -97,69 +93,88 @@ public class Skellige implements Locations{
 		System.out.println("The Healer" + "\n The healer will either increase your health by half or fully."
 				+ "\nHalf recovery - 5 coins"
 				+ "\tFull recovery - 10 coins"
-				+"\nEnter half or full");
-				while(!scan.next().equals("exit")) {
-					if(scan.next().equals("half")) {
+				+"\nEnter half or full\t Enter exit to leave");
+				while(true) {
+					String option = scan.next();
+					if(option.equals("half")) {
 						if(p.coins - 5 < 0)
 						{
 							System.out.println("Cannot afford");
 						}
 						else {
-							Swallow s = new Swallow();
-							System.out.println("Brewing a Swallow: ");
-							s.makePotion();
-							System.out.println("Brewed Swallow!");
-							p.health_level += (currMaxHP/2); 
-							p.coins -= 5;
+						p.health_level += (currMaxHP/2); 
+						p.coins -= 5;
+						System.out.println("Coins left: " + p.coins);
 						}
 					}
-					else if(scan.next().equals("full")) {
+					else if(option.equals("full")) {
 						if(p.coins - 10 < 0)
 						{
 							System.out.println("Cannot afford");
 						}
 						else {
-							EnhancedSwallow es = new EnhancedSwallow();
-							System.out.println("Brewing a Enhanced Swallow: ");
-							Swallow s = new Swallow();
-							s.makePotion();
-							System.out.println("Brewed Swallow!");
-							es.makePotion();
-							System.out.println("Brewed Enhanced Swallow!");
-							p.health_level += currMaxHP; 
-							p.coins -= 10;
+						p.health_level += currMaxHP; 
+						p.coins -= 10;
+						System.out.println("Coins left: " + p.coins);
 						}
+					}
+					else if(option.equals("exit")) {
+						break;
 					}
 					else {
 						System.out.println("Enter from the given options");
 					}
 				}
-				//create a variable in the UI which keeps the player's location
-		
+				System.out.println("Now leaving the Healer");
 	}
 
 	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
-		p.dialogueIntro(curLoc);
-		er.dialogueIntro(curLoc);
 		return false;
 	}
 	@Override
 	public void lookAround() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("welcome to Skellige");
+
+		goTo(scan.next());
+
 	}
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub
+		int pHP = p.health_level;
+		if(er.isAlive == true){
+			System.out.println("Here's Eredin!");
+			p.dialogueIntro(The_Cave.curLoc);
+			er.dialogueIntro(The_Cave.curLoc);
+			Watch wT = new Watch(p);
+		UserFight uF = new UserFight(p,er,wT);
+		EnemyFight eF = new EnemyFight(p,er);
+		p.health_level = currMaxHP;
+		if(uF.done == true) {
+			//lost to Eredin
+			p.health_level = pHP;
+		}
+		else if(eF.done == true) {
+			//won against Eredin
+			p.health_level+= 15;
+			p.attack_level+= 15;
+			p.coins+= 100;
+			//add ending story
+		}
+			}
+		else {}
 		
 	}
 	@Override
 	public void goBack() {
 		// TODO Auto-generated method stub
 		System.out.println("now entering The Ice Mountain");
+		The_IceMountain iM = new The_IceMountain(p);
 		The_Cave.curLoc="The Ice Mountain";
+		iM.lookAround();
 	}
 	
 

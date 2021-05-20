@@ -6,52 +6,75 @@ import java.util.Scanner;
 public class Driver {
 
 	static String curLoc=null;
-	
+
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter name: ");
-		Player player = new Player(sc.next());
-		Nithral nT = new Nithral();
-		The_Cave  tC = new The_Cave(player,nT);
-		Kaer_Morhen kM = new Kaer_Morhen();
+		String pname = sc.next();
+		Player player = new Player(pname);
+		The_Cave  tC = new The_Cave(player);
 		The_IceMountain tIM = new The_IceMountain(player);
 		Skellige sK = new Skellige(player);
-		//new TCP_C("192.168.100.40", 49395);
-			
-			System.out.println("Game begins: " + "\nPlayer stats: "
-			+"Attack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
-			System.out.println("Goto \nOptions:Kaer Morhen\tThe Cave\tThe Ice Mountain\tSkellige");
-			String enter = sc.next();
-			if(enter.equalsIgnoreCase("the cave")) {
-				System.out.println("The Cave");
-				curLoc = "The Cave";
-				tC.lookAround();
-			}
-			else if(enter.equalsIgnoreCase("kaer morhen")) {
-				System.out.println("Kaer Morhen");
+
+		System.out.println("Welcome " + pname+ "!\n\t\tGame begins: " + "\nPlayer stats: "+ "\tCoins:"+player.coins
+				+"\tAttack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
+		//System.out.println("Goto \nOptions:Kaer Morhen\tThe Cave\tThe Ice Mountain\tSkellige");
+		//String enter = sc.nextLine();
+		//enter = enter.toLowerCase();
+		//System.out.println(enter);
+		//if(enter.equals("the cave")) {			}
+		/*else if(enter.equalsIgnoreCase("kaer morhen")) {
+				System.out.println("Now traveling to Kaer Morhen");
 				curLoc = "Kaer Morhen";
 				kM.lookAround();
 			}
 			else if(enter.equalsIgnoreCase("the ice mountain") || enter.equalsIgnoreCase("Skellige")) {
 				//if-else if location is unlocked
-			}
-			new TCP_C("192.168.1.102", 50807);
+				System.out.println("Cannot travel there yet!");
+			}*/
+		System.out.println("Now traveling to The Cave");
+		curLoc = "The Cave";
+		tC.lookAround();
+		String[] commands = {"right","left","forth","back","quit","stats","use"};
+		while(true) {
 			String entry1=sc.next();
-			while(!entry1.equalsIgnoreCase("exit")) {
-				
-				switch(The_Cave.curLoc) {
-				case "The Cave":
-					tC.goTo(TCP_C.movement);break;
-				case "Kaer Morhen":
-					kM.goTo(TCP_C.movement);break;
-				case "The Ice Mountain":
-					tIM.goTo(TCP_C.movement);break;
-				case "Skellige":
-					sK.goTo(TCP_C.movement);break;
-						
+			boolean checkCom = false;
+			for(int i=0;i<commands.length;i++) {
+				if(entry1.equals(commands[i])) {
+					checkCom = true;break;
 				}
 			}
-		
+
+			if(checkCom){
+				if(entry1.equals("quit")) {
+					System.out.print("quitting game");
+					System.exit(0);
+				}
+				else if(entry1.equals("stats")) {
+					System.out.print("Name: " + player.name +"\tCoins:"+player.coins+"\nPlayer stats: "
+					+"Attack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
+				}
+				else if(entry1.equals("use")) {
+					for (int i = 0; i < player.potionsAv.size(); i++) {
+					      System.out.println(player.potionsAv.get(i));
+					    }
+				}
+				else {
+				switch(curLoc) {
+				case "The Cave":
+					tC.goTo(entry1);break;
+				case "The Ice Mountain":
+					tIM.goTo(entry1);break;
+				case "Skellige":
+					sK.goTo(entry1);break;
+				}
+				}
+			}
+			else {
+				System.out.print("Enter valid command");
+			}
+		}
+
 	}
 }

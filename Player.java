@@ -1,5 +1,7 @@
 package Project;
 
+import java.util.ArrayList;
+
 public class Player extends Characters{
 
 	String name;
@@ -7,16 +9,14 @@ public class Player extends Characters{
 	int attack_level;
 	int bonus_attack;
 	int coins;
-	int armor;
+	ArrayList<String> potionsAv = new ArrayList<String>();
 	public Player(String name) {
 		this.name = name;
 		this.health_level = 250;
-		this.attack_level = 75;
+		this.attack_level = 50;
 		this.bonus_attack = 15;
 		this.coins=50;
-		this.armor = 0;
 	}
-	
 
 
 	@Override

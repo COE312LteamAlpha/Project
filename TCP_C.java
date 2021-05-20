@@ -18,13 +18,13 @@ public class TCP_C implements Runnable {
     JSONParser parser = new JSONParser();
     // need the port 
     int port = 8080;
-    static String movement; static boolean spell=false;
-    
-	TCP_C(String host, int port){
+     String movement;  boolean spell=false;
+     BattleDuo bD;
+	TCP_C(String host, int port,BattleDuo bD){
 			
 		this.host = host;
 		this.port = port;
-		
+		this.bD = bD;
 		// make this a thread
 		Thread t = new Thread(this);
 		t.start();
@@ -60,15 +60,20 @@ public class TCP_C implements Runnable {
 		}
 		else if(Xval<-0.5) {
 			movement="left";
+			System.out.println("l");
 		}
 		else if(Zval< -0.5) {
 			movement = "front";
+			System.out.println("f");
 		}
 		else if(Zval > 0.5) {
 			movement = "back";
+			System.out.println("a");
 		}
 		if(Aval > -2) {
 			spell=true;
+			bD.spellAttack();
+			System.out.println("a");
 			Thread.sleep(10000);
 		}
 		

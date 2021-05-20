@@ -7,7 +7,6 @@ public class The_IceMountain implements Locations {
 
 	Player p;
 	int currMaxHP;
-	String curLoc;
 	Caranthir c = new Caranthir();
 	Scanner scan = new Scanner(System.in);
 	The_IceMountain(Player p){
@@ -16,16 +15,16 @@ public class The_IceMountain implements Locations {
 		this.currMaxHP = p.health_level;
 	}
 	public void goTo(String loc) {
-		if(loc=="right") {
+		if(loc.equals("right")) {
 			L_right();
 		}
-		else if(loc=="left") {
+		else if(loc.equals("left")) {
 			L_left();
 		}
-		else if(loc=="front") {
+		else if(loc.equals("forth")) {
 			goForth();
 		}
-		else if(loc=="back") {
+		else if(loc.equals("back")) {
 			goBack();
 		}
 	}
@@ -40,10 +39,10 @@ public class The_IceMountain implements Locations {
 				+ "\n3. Half Heal Potion - 35 coins "
 				+ "\n4. Full Health Potion - 50 coins" 
 				+ "\n5. Giant Size Potion- 65 coins \t Attack: +500 \tHealth: +500"
-				+ "\nEnter option number to select \tType exit to leave:");
-		while(!scan.next().equals("exit")) {
-
-			if(scan.nextInt() == 1) {
+				+ "\nEnter option number to select \tType 6 to leave:");
+		while(true) {
+			int option = scan.nextInt();
+			if(option == 1) {
 				if(p.coins - 15 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -51,10 +50,11 @@ public class The_IceMountain implements Locations {
 				else {
 					p.coins -= 15;
 					System.out.println("Now you have the ability to turn invisble for 30 seconds");
+					p.potionsAv.add("Invisibility Potion");
 					System.out.println("Coins left: " + p.coins);
 				}
 			}
-			else if(scan.nextInt() == 2) {
+			else if(option == 2) {
 				if(p.coins - 25 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -63,11 +63,12 @@ public class The_IceMountain implements Locations {
 					p.bonus_attack += 15;
 					p.coins -= 25;
 					System.out.println("Now you have the ability to become fast for 40 seconds");
+					p.potionsAv.add("Speed Potion");
 					System.out.println("Coins left: " + p.coins);
 				}
 			}
 
-			else if(scan.nextInt() == 3) {
+			else if(option == 3) {
 				if(p.coins - 35 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -76,10 +77,11 @@ public class The_IceMountain implements Locations {
 					p.health_level += currMaxHP/2;
 					p.coins -= 35;
 					System.out.println("Now you have the ability to restore half your health");
+					p.potionsAv.add("Half Heal Potion");
 					System.out.println("Coins left: " + p.coins);
 				}
 			}
-			else if(scan.nextInt() == 4) {
+			else if(option == 4) {
 				if(p.coins - 50 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -88,10 +90,11 @@ public class The_IceMountain implements Locations {
 					p.health_level += currMaxHP;
 					p.coins -= 50;
 					System.out.println("Now you have the ability to restore your full health");
+					p.potionsAv.add("Full Health Potion");
 					System.out.println("Coins left: " + p.coins);
 				}
 			}
-			else if(scan.nextInt() == 5) {
+			else if(option == 5) {
 				if(p.coins - 65 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -101,137 +104,70 @@ public class The_IceMountain implements Locations {
 					p.health_level += 500;
 					p.coins -= 65;
 					System.out.println("Now you have the ability to upsize to giant (name of character controlled by player?)");
+					p.potionsAv.add("Giant Size Potion");
 					System.out.println("Coins left: " + p.coins);
 				}
+			}
+			else if(option==6) {
+				break;
 			}
 			else {
 				System.out.println("Enter from the given options:");
 			}
 		}
+		System.out.println("Now leaving the Chemist");
 	}
 
 	@Override
 	public void L_left() {
 		// TODO Auto-generated method stub
-		System.out.println("Here you can interact with the Armourer and/or the trader!\nThe Armourer can mend or sell weapons and armours\nThe Trader can upgrade weapons or armours, fully developed potions/spells");
-		System.out.println("Enter the character you want to interact with ie(talk to ...):");
-		while(!scan.next().equals("exit")) {
-			if(scan.nextLine().equalsIgnoreCase("talk to Armourer")) 
-			{
-				System.out.println("You can purchase armour sets from here: "
-						+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
-						+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +15 \tHealth: +75"
-						+ "\n3. Ursine Gear Set - 35 coins \t Attack: +10 \tHealth: +100"
-						+ "\n4. Sword Set - 50 coins \t Attack: +35"
-						+ "\n5. Twohanded Sword Set - 65 coins \t Attack: +90"
-						+ "\nEnter option number to select \tType exit to leave:");
-				if(scan.nextInt() == 1) {
-					if(p.coins - 15 < 0)
-					{
-						System.out.println("Cannot afford");
-					}
-					else {
-						p.attack_level += 20;
-						p.health_level += 50;
-						p.coins -= 15;
-						System.out.println("Coins left: " + p.coins);
-					}
-				}
-				else if(scan.nextInt() == 2) {
-					if(p.coins - 25 < 0)
-					{
-						System.out.println("Cannot afford");
-					}
-					else {
-						p.bonus_attack += 15;
-						p.health_level += 70;
-						p.coins -= 25;
-						System.out.println("Coins left: " + p.coins);
-					}
-				}
-				else if(scan.nextInt() == 3) {
-					if(p.coins - 35 < 0)
-					{
-						System.out.println("Cannot afford");
-					}
-					else {
-						p.attack_level += 10;
-						p.health_level += 100;
-						p.coins -= 35;
-						System.out.println("Coins left: " + p.coins);
-					}
-				}
-				else if(scan.nextInt() == 4) {
-					if(p.coins - 50 < 0)
-					{
-						System.out.println("Cannot afford");
-					}
-					else {
-						p.attack_level += 35;
-						p.coins -= 50;
-						System.out.println("Coins left: " + p.coins);
-					}
-				}
-				else if(scan.nextInt() == 5) {
-					if(p.coins - 65 < 0)
-					{
-						System.out.println("Cannot afford");
-					}
-					else {
-						p.attack_level += 90;
-						p.coins -= 65;
-						System.out.println("Coins left: " + p.coins);
-					}
-				}
-				else {
-					System.out.println("Enter from the given options:");
-				}
-			}
-			if(scan.nextLine().equalsIgnoreCase("talk to Trader")) {
-				System.out.println("You can upgrade weapons or armours, fully developed potions/spells here: "
-						+ "\n1. Griffin Gear Upgrade Set - 7 coins" + "\t Attack: +5 \tHealth: +12"
-						+ "\n2. Manticore Gear Upgrade Set - 9 coins \t Spell bonus: +12 \tHealth: +7"
-						+ "\n3. Ursine Gear Upgrade Set - 15 coins \t Attack: +15 \tHealth: +15"
-						+ "\n4. Sword(10% Damage) - 20 coins"
-						+ "\n5. Twohanded Sword (5% Damage) - 10 coins"
-						+ "\nEnter option number to select \tType exit to leave:");
-				if(scan.nextInt() == 1) {
+		System.out.println("Here you can interact with the trader!\nThe Trader can upgrade weapons or armours, fully developed potions/spells");
+		System.out.println("You can upgrade weapons or armours, fully developed potions/spells here: "
+				+ "\n1. Griffin Gear Upgrade Set - 7 coins" + "\t Attack: +5 \tHealth: +12"
+				+ "\n2. Manticore Gear Upgrade Set - 9 coins \t Spell bonus: +12 \tHealth: +7"
+				+ "\n3. Ursine Gear Upgrade Set - 15 coins \t Attack: +15 \tHealth: +15"
+				+ "\n4. Sword(10% Damage) - 20 coins"
+				+ "\n5. Twohanded Sword (5% Damage) - 10 coins"
+				+ "\nEnter option number to select \tType 6 to leave:");
+		while(true) {
+			int option = scan.nextInt();
+				if(option == 1) {
 					p.attack_level += 5;
 					p.health_level += 12;
 					p.coins -= 7;
 					System.out.println("Coins left: " + p.coins);
 				}
-				else if(scan.nextInt() == 2) {
+				else if(option == 2) {
 					p.bonus_attack += 12;
 					p.health_level += 7;
 					p.coins -= 9;
 					System.out.println("Coins left: " + p.coins);
 				}
-				else if(scan.nextInt() == 3) {
+				else if(option == 3) {
 					p.attack_level += 15;
 					p.health_level += 15;
 					p.coins -= 15;
 					System.out.println("Coins left: " + p.coins);
 				}
-				else if(scan.nextInt() == 4) {
+				else if(option == 4) {
 					p.attack_level += p.attack_level*0.1;
 					p.coins -= 20;
 					System.out.println("Coins left: " + p.coins);
 				}
-				else if(scan.nextInt() == 5) {
+				else if(option == 5) {
 					p.attack_level += p.attack_level*0.05;
 					p.coins -= 10;
 					System.out.println("Coins left: " + p.coins);
 				}
+				else if(option==6) {
+					break;
+				}
 				else {
 					System.out.println("Enter from the given options:");
 				}
-
-
-			}
 		}
 
-
+		System.out.println("Now leaving the Trader");
 		this.currMaxHP = p.health_level;
 		//create a variable in the UI which keeps the player's location
 	}
@@ -239,47 +175,60 @@ public class The_IceMountain implements Locations {
 	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
-		p.dialogueIntro(curLoc);
-		c.dialogueIntro(curLoc);
+		
 		return false;
 	}
 
 	@Override
 	public void lookAround() {
 		// TODO Auto-generated method stub
-		System.out.println("To the right there's a Chemist, and to the left theres an Armourer and a Trader."
+		System.out.println("To the right there's a Chemist, and to the left theres a Trader."
 				+ " And to theres an odd force to the front" + "\n\t (You can go right, left or forth)");
+		//goTo(scan.next());
 	}
 
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub
-		
+		int pHP = p.health_level;
 		if(c.isAlive == true){
 			System.out.println("Here's Caranthir!");
+			p.dialogueIntro(The_Cave.curLoc);
+			c.dialogueIntro(The_Cave.curLoc);
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,c,wT);
 		EnemyFight eF = new EnemyFight(p,c);
-		
+		p.health_level = currMaxHP;
 		if(uF.done == true) {
 			//lost to Caranthir
+			
+			p.health_level = pHP;
 		}
 		else if(eF.done == true) {
 			//won against Caranthir
 			p.health_level+= 15;
 			p.attack_level+= 15;
+			p.coins+= 100;
+			Skellige sK = new Skellige(p);
+			System.out.println("now entering Skellige");
+			The_Cave.curLoc = "Skellige";
+			sK.lookAround();
 		}
 			}
 		else {
 			//goto location 3
+			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
 			The_Cave.curLoc = "Skellige";
+			sK.lookAround();
 		}
 	}
 	@Override
 	public void goBack() {
 		// TODO Auto-generated method stub
 		System.out.println("now entering The Cave");
+		The_Cave tC = new The_Cave(p);
 		The_Cave.curLoc = "The Cave";
+		tC.lookAround();
 	}
 }

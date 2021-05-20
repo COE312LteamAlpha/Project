@@ -10,19 +10,19 @@ public class Caranthir extends Characters{
 	}
 	
 	@Override
-	public void dialogueIntro(String s) {
+	public void dialogueIntro(String currLoc) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void dialogueVictory(String s) {
+	public void dialogueVictory(String currLoc) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void dialogueDefeat(String s) {
+	public void dialogueDefeat(String currLoc) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,16 +1,21 @@
 package Project;
 
+import java.util.Random;
 
 public class UserFight extends ConcreteObserver implements Runnable {
 
 	Player p;
 	Characters boss;
 	BattleDuo battle;
+	int pHP;
+	Random rand = new Random();
+
 	boolean done=false;
 	
 	public UserFight(Player p,Nithral n,Subject subject) {
 		super(subject);
-		this.p=p;
+		this.p=p;this.boss = n;
+		//pHP = p.health_level;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
 		Thread t1 = new Thread(this);
@@ -18,7 +23,8 @@ public class UserFight extends ConcreteObserver implements Runnable {
 	}
 	public UserFight(Player p,Caranthir n,Subject subject) {
 		super(subject);
-		this.p=p;
+		this.p=p;this.boss = n;
+		//pHP = p.health_level;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
 		Thread t1 = new Thread(this);
@@ -26,7 +32,8 @@ public class UserFight extends ConcreteObserver implements Runnable {
 	}
 	public UserFight(Player p,Eredin n,Subject subject) {
 		super(subject);
-		this.p=p;
+		this.p=p;this.boss = n;
+		//pHP = p.health_level;
 		BattleDuo battle1 = new BattleDuo(p, n);
 		this.battle = battle1;
 		Thread t1 = new Thread(this);
@@ -36,9 +43,17 @@ public class UserFight extends ConcreteObserver implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		
 		while(!done) {
-			if(p.health_level == 0) {
+			if(p.health_level <= 0) {
 				System.out.println("Player lost!");
+				//p.health_level = pHP;
+				done = true;
+			}
+			else if(boss.health_level <= 0)
+			{
+				//System.out.println("Enemy lose!");//gotta improve this
+				boss.isAlive=false;
 				done = true;
 			}
 			else if(Watch.timer == 0) {
@@ -49,7 +64,7 @@ public class UserFight extends ConcreteObserver implements Runnable {
 				battle.AttackEnemy();
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(rand.nextInt(3000));
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}

@@ -6,26 +6,25 @@ public class The_Cave implements Locations{
 
 	Player p;
 	int currMaxHP;
-	Nithral n;
+	Nithral n = new Nithral();
 	static String curLoc="";
 	Scanner scan = new Scanner(System.in);
-	The_Cave(Player p, Nithral n){
+	The_Cave(Player p){
 		this.p=p;
-		this.n=n;
 		this.currMaxHP = p.health_level;
 	}
 	
 	public void goTo(String loc) {
-		if(loc=="right") {
+		if(loc.equals("right")) {
 			L_right();
 		}
-		else if(loc=="left") {
+		else if(loc.equals("left")) {
 			L_left();
 		}
-		else if(loc=="front") {
+		else if(loc.equals("forth")) {
 			goForth();
 		}
-		else if(loc=="back") {
+		else if(loc.equals("back")) {
 			goBack();
 		}
 	}
@@ -38,11 +37,12 @@ public class The_Cave implements Locations{
 		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
 		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +15 \tHealth: +75"
 		+ "\n3. Ursine Gear Set - 35 coins \t Attack: +10 \tHealth: +100"
-		+ "\nEnter option number to select \tType exit to leave");
+		+ "\nEnter option number to select \tType 4 to leave");
 		
 		//Scanner scan = new Scanner(System.in);
-		while(!scan.next().equals("exit")) {
-			if(scan.nextInt() == 1) {
+		while(true) {
+			int option = scan.nextInt();
+			if( option == 1) {
 				if(p.coins - 15 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -50,12 +50,11 @@ public class The_Cave implements Locations{
 				else {
 				p.attack_level += 20;
 				p.health_level += 50;
-				p.armor = 1;
 				p.coins -= 15;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
-			else if(scan.nextInt() == 2) {
+			else if(option == 2) {
 				if(p.coins - 25 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -64,11 +63,10 @@ public class The_Cave implements Locations{
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
-				p.armor = 2;
 				System.out.println("Coins left: " + p.coins);
 				}
 			}
-			else if(scan.nextInt() == 3) {
+			else if(option == 3) {
 				if(p.coins - 35 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -77,14 +75,17 @@ public class The_Cave implements Locations{
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
-				p.armor = 3;
 				System.out.println("Coins left: " + p.coins);
 				}
+			}
+			else if(option == 4) {
+				break;
 			}
 			else {
 				System.out.println("Enter from the given options");
 			}
 		}
+		System.out.println("Now leaving the Armourer");
 		this.currMaxHP = p.health_level;
 		//create a variable in the UI which keeps the player's location
 		
@@ -94,46 +95,43 @@ public class The_Cave implements Locations{
 	public void L_left() {
 		// TODO Auto-generated method stub
 		System.out.println("The Healer" + "\n The healer will either increase your health by half or fully."
-				+ "\nHalf recovery - 5 coins"
-				+ "\tFull recovery - 10 coins"
-				+"\nEnter half or full");
-				while(!scan.next().equals("exit")) {
-					if(scan.next().equals("half")) {
-						if(p.coins - 5 < 0)
-						{
-							System.out.println("Cannot afford");
-						}
-						else {
-							Swallow s = new Swallow();
-							System.out.println("Brewing a Swallow: ");
-							s.makePotion();
-							System.out.println("Brewed Swallow!");
-							p.health_level += (currMaxHP/2); 
-							p.coins -= 5;
-						}
-					}
-					else if(scan.next().equals("full")) {
-						if(p.coins - 10 < 0)
-						{
-							System.out.println("Cannot afford");
-						}
-						else {
-							EnhancedSwallow es = new EnhancedSwallow();
-							System.out.println("Brewing a Enhanced Swallow: ");
-							Swallow s = new Swallow();
-							s.makePotion();
-							System.out.println("Brewed Swallow!");
-							es.makePotion();
-							System.out.println("Brewed Enhanced Swallow!");
-							p.health_level += currMaxHP; 
-							p.coins -= 10;
-						}
-					}
-					else {
-						System.out.println("Enter from the given options");
-					}
+		+ "\nHalf recovery - 5 coins"
+		+ "\tFull recovery - 10 coins"
+		+"\nEnter half or full\t Enter exit to leave");
+		while(true) {
+			
+			String option = scan.next();
+			if(option.equals("half")) {
+				if(p.coins - 5 < 0)
+				{
+					System.out.println("Cannot afford");
 				}
-				//create a variable in the UI which keeps the player's location
+				else {
+				p.health_level += (currMaxHP/2); 
+				p.coins -= 5;
+				System.out.println("Coins left: " + p.coins);
+				}
+			}
+			else if(option.equals("full")) {
+				if(p.coins - 10 < 0)
+				{
+					System.out.println("Cannot afford");
+				}
+				else {
+				p.health_level += currMaxHP; 
+				p.coins -= 10;
+				System.out.println("Coins left: " + p.coins);
+				}
+			}
+			else if(option.equals("exit")) {
+				break;
+			}
+			else {
+				System.out.println("Enter from the given options");
+			}
+		}
+		System.out.println("Now leaving the Healer");
+		//create a variable in the UI which keeps the player's location
 	}
 
 	@Override
@@ -156,34 +154,44 @@ public class The_Cave implements Locations{
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub
-		
+		int pHP = p.health_level;
 		if(n.isAlive == true){
 			System.out.println("Here's Nithral!!");
+			p.dialogueIntro(curLoc);
+			n.dialogueIntro(curLoc);
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,n,wT);
 		EnemyFight eF = new EnemyFight(p,n);
+		p.health_level = currMaxHP;
 		if(uF.done == true) {
 			//lost to Nithral
+			p.health_level = pHP;
 		}
 		else if(eF.done == true) {
 			//won against Nithral
+			p.health_level = pHP;
 			p.health_level+= 10;
 			p.attack_level+= 10;
+			p.coins+= 75;
+			System.out.println("now entering The Ice Mountain");
+			curLoc = "The Ice Mountain";
+			The_IceMountain iM = new The_IceMountain(p);
+			iM.lookAround();
 		}
 			}
 		else {
 			//goto location 2
 			System.out.println("now entering The Ice Mountain");
 			curLoc = "The Ice Mountain";
-
+			The_IceMountain iM = new The_IceMountain(p);
+			iM.lookAround();
 		}
 	}
 
 	@Override
 	public void goBack() {
 		// TODO Auto-generated method stub
-		System.out.println("now entering Kaer Morhen");
-		curLoc = "Kaer Morhen";
+		System.out.println("nowhere to go");
 	}
 
 }

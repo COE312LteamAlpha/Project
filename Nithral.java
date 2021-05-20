@@ -3,8 +3,8 @@ package Project;
 public class Nithral extends Characters{
 	
 	public Nithral() {
-		this.health_level = 200;
-		this.attack_level = 40;
+		this.health_level = 500;
+		this.attack_level = 75;
 		this.bonus_attack = 10;
 		this.isAlive=true;
 	}

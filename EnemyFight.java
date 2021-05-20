@@ -1,12 +1,14 @@
 package Project;
 
+import java.util.Random;
+
 public class EnemyFight implements Runnable{
 
 	BattleDuo battle;
 	Player p;
 	Characters boss;
 	int health;
-	
+	Random rand = new Random();
 	boolean done = false;
 	
 	public EnemyFight(Player p,Nithral n) {
@@ -36,10 +38,14 @@ public class EnemyFight implements Runnable{
 	
 	public void run() {
 		while(!done) {
-			if(boss.health_level == 0)
+			if(boss.health_level <= 0)
 			{
 				System.out.println("Enemy lose!");//gotta improve this
 				boss.isAlive=false;
+				done = true;
+			}
+			else if(p.health_level <= 0) {
+				//System.out.println("Player lost!");
 				done = true;
 			}
 			else
@@ -47,7 +53,7 @@ public class EnemyFight implements Runnable{
 				battle.AttackPlayer();
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(rand.nextInt(3000));
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
