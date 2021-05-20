@@ -1,12 +1,12 @@
-package proj1;
+package Project;
 
-public class Nithral extends Characters {
+public class Nithral extends Characters{
 	
-	public Nithral(String name) {
-		this.name = name;
+	public Nithral() {
 		this.health_level = 200;
-		this.attack_level = 15;
+		this.attack_level = 40;
 		this.bonus_attack = 10;
+		this.isAlive=true;
 	}
 	
 	public void dialogueIntro() {
@@ -17,6 +17,10 @@ public class Nithral extends Characters {
 	}
 	public void dialogueDefeat() {
 		
+	}
+	
+	public synchronized int getHealth() {
+		return this.health_level;
 	}
 
 }

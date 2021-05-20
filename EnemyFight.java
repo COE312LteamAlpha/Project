@@ -1,20 +1,56 @@
-package proj1;
+package Project;
 
 public class EnemyFight implements Runnable{
 
-	Nithral n;
-	Caranthir c;
-	Eredin e;
+	BattleDuo battle;
+	Player p;
+	Characters boss;
+	int health;
 	
-	EnemyFight(Nithral n){
-		this.n=n;
+	boolean done = false;
+	
+	public EnemyFight(Player p,Nithral n) {
+		this.p=p;
+		this.boss = n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
 	}
-	EnemyFight(Caranthir c){
-		this.c = c;
+	public EnemyFight(Player p,Caranthir n) {
+		this.p=p;
+		this.boss=n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
 	}
-	EnemyFight(Eredin e){
-		this.e=e;
+	public EnemyFight(Player p,Eredin n) {
+		this.p=p;
+		this.boss=n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		Thread t1 = new Thread(this);
+		t1.start();
 	}
 	
-	public void run() {}
+	public void run() {
+		while(!done) {
+			if(boss.health_level == 0)
+			{
+				System.out.println("Enemy lose!");//gotta improve this
+				boss.isAlive=false;
+				done = true;
+			}
+			else
+			{
+				battle.AttackPlayer();
+			}
+			try {
+				Thread.sleep(1000);
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		}
+	}
 }
