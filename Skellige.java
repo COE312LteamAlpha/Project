@@ -101,8 +101,12 @@ public class Skellige implements Locations{
 							System.out.println("Cannot afford");
 						}
 						else {
-						p.health_level += (currMaxHP/2); 
-						p.coins -= 5;
+							Swallow s = new Swallow();
+							System.out.println("Brewing a Swallow: ");
+							s.makePotion();
+							System.out.println("Brewed Swallow!");
+							p.health_level += (currMaxHP/2); 
+							p.coins -= 5;
 						}
 					}
 					else if(scan.next().equals("full")) {
@@ -111,8 +115,15 @@ public class Skellige implements Locations{
 							System.out.println("Cannot afford");
 						}
 						else {
-						p.health_level += currMaxHP; 
-						p.coins -= 10;
+							EnhancedSwallow es = new EnhancedSwallow();
+							System.out.println("Brewing a Enhanced Swallow: ");
+							Swallow s = new Swallow();
+							s.makePotion();
+							System.out.println("Brewed Swallow!");
+							es.makePotion();
+							System.out.println("Brewed Enhanced Swallow!");
+							p.health_level += currMaxHP; 
+							p.coins -= 10;
 						}
 					}
 					else {

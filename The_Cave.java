@@ -91,35 +91,46 @@ public class The_Cave implements Locations{
 	public void L_left() {
 		// TODO Auto-generated method stub
 		System.out.println("The Healer" + "\n The healer will either increase your health by half or fully."
-		+ "\nHalf recovery - 5 coins"
-		+ "\tFull recovery - 10 coins"
-		+"\nEnter half or full");
-		while(!scan.next().equals("exit")) {
-			if(scan.next().equals("half")) {
-				if(p.coins - 5 < 0)
-				{
-					System.out.println("Cannot afford");
+				+ "\nHalf recovery - 5 coins"
+				+ "\tFull recovery - 10 coins"
+				+"\nEnter half or full");
+				while(!scan.next().equals("exit")) {
+					if(scan.next().equals("half")) {
+						if(p.coins - 5 < 0)
+						{
+							System.out.println("Cannot afford");
+						}
+						else {
+							Swallow s = new Swallow();
+							System.out.println("Brewing a Swallow: ");
+							s.makePotion();
+							System.out.println("Brewed Swallow!");
+							p.health_level += (currMaxHP/2); 
+							p.coins -= 5;
+						}
+					}
+					else if(scan.next().equals("full")) {
+						if(p.coins - 10 < 0)
+						{
+							System.out.println("Cannot afford");
+						}
+						else {
+							EnhancedSwallow es = new EnhancedSwallow();
+							System.out.println("Brewing a Enhanced Swallow: ");
+							Swallow s = new Swallow();
+							s.makePotion();
+							System.out.println("Brewed Swallow!");
+							es.makePotion();
+							System.out.println("Brewed Enhanced Swallow!");
+							p.health_level += currMaxHP; 
+							p.coins -= 10;
+						}
+					}
+					else {
+						System.out.println("Enter from the given options");
+					}
 				}
-				else {
-				p.health_level += (currMaxHP/2); 
-				p.coins -= 5;
-				}
-			}
-			else if(scan.next().equals("full")) {
-				if(p.coins - 10 < 0)
-				{
-					System.out.println("Cannot afford");
-				}
-				else {
-				p.health_level += currMaxHP; 
-				p.coins -= 10;
-				}
-			}
-			else {
-				System.out.println("Enter from the given options");
-			}
-		}
-		//create a variable in the UI which keeps the player's location
+				//create a variable in the UI which keeps the player's location
 	}
 
 	@Override
