@@ -36,6 +36,14 @@ public class EnemyFight implements Runnable{
 		t1 = new Thread(this);
 		t1.start();
 	}
+	public EnemyFight(Player p,AngryEredin n) {
+		this.p=p;
+		this.boss=n;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		t1 = new Thread(this);
+		t1.start();
+	}
 	
 	public Thread get_thread() {
 		return t1;
@@ -47,11 +55,14 @@ public class EnemyFight implements Runnable{
 			{
 				System.out.println("You have defeated your opponent!");//gotta improve this
 				boss.isAlive=false;
+				Watch.tm=false;
 				done = true;
 			}
 			else if(p.health_level <= 0) {
 				//System.out.println("Player lost!");
-				done = true;
+				//done = true;
+				Watch.tm=false;
+				break;
 			}
 			else
 			{

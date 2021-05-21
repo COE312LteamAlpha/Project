@@ -18,7 +18,7 @@ public class BattleDuo{
 	}
 	public BattleDuo(Player p1, AngryEredin ae){
 		this.p=p1;
-		//this.boss = ae;
+		this.boss = ae;
 	}
 	public BattleDuo(Player p1, Caranthir c){
 		this.p=p1;

@@ -1,6 +1,6 @@
 package proj1;
 
-public class Eredin extends Characters{
+public class Eredin extends Characters implements States{
 
 	public Eredin() {
 		this.health_level = 1000;
@@ -30,6 +30,23 @@ public class Eredin extends Characters{
 	public void dialogueDefeat(String s) {
 		// TODO Auto-generated method stub
 		System.out.println("Impossible...! I've been bested by your worthless feints and pirouettes...How pathetic..");
+		
+	}
+
+	@Override
+	public void prev(EredinStates context) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void next(EredinStates context) {
+		// TODO Auto-generated method stub
+		context.setState(new AngryEredin());
+	}
+
+	@Override
+	public void printStatus() {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -5,16 +5,16 @@ public class Watch extends ConcreteSubject implements Runnable{
 	Player p;
 	static int timer;
 	Thread t;
-	boolean tm;
+	static boolean tm;
 	Watch(Player p){
 		this.p=p;
 		this.timer=120;
-		this.tm=true;
+		tm=true;
 		this.t = new Thread(this);
 		t.start();
 	}
 	public void stopW() {
-		this.tm=false;
+		tm=false;
 	}
 	public void run() {
 		try {

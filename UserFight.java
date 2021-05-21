@@ -39,6 +39,15 @@ public class UserFight extends ConcreteObserver implements Runnable {
 		t1 = new Thread(this);
 		t1.start();
 	}
+	public UserFight(Player p,AngryEredin n,Subject subject) {
+		super(subject);
+		this.p=p;this.boss = n;
+		//pHP = p.health_level;
+		BattleDuo battle1 = new BattleDuo(p, n);
+		this.battle = battle1;
+		t1 = new Thread(this);
+		t1.start();
+	}
 	
 	public Thread get_thread() {
 		return t1;
@@ -59,13 +68,16 @@ public class UserFight extends ConcreteObserver implements Runnable {
 				System.out.println("Player lost!");
 				//p.health_level = pHP;
 				done = true;
+				Watch.tm=false;
 			}
 			else if(boss.health_level <= 0)
 			{
 				p.coins+= 75;
 				//System.out.println("Enemy lose!");//gotta improve this
 				boss.isAlive=false;
-				done = true;
+				Watch.tm=false;
+				//done = true;
+				break;
 			}
 			else if(Watch.timer == 0) {
 				done=true;

@@ -185,7 +185,7 @@ public class The_IceMountain implements Locations {
 	public void lookAround() {
 		// TODO Auto-generated method stub
 		System.out.println("To the right there's a Chemist, and to the left theres a Trader."
-				+ " And to theres an odd force to the front" + "\n\t (You can go right, left or forth)");
+				+ " And to theres an odd force to the front" + "\n\t (You can go right, left, back or forth)");
 		//goTo(scan.next());
 	}
 
