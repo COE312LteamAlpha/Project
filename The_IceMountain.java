@@ -140,8 +140,8 @@ public class The_IceMountain implements Locations {
 					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 2) {
-					p.bonus_attack += 12;
-					p.health_level += 7;
+					p.bonus_attack += 50;
+					p.health_level += 70;
 					p.coins -= 35;
 					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}

@@ -44,9 +44,9 @@ public class The_Cave implements Locations{
 				+ "");
 		
 		System.out.println("You can purchase armour sets from here: "
-		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
-		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +15 \tHealth: +75"
-		+ "\n3. Ursine Gear Set - 35 coins \t Attack: +10 \tHealth: +100"
+		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +50 \tHealth: +50"
+		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +30 \tHealth: +75"
+		+ "\n3. Ursine Gear Set - 35 coins \t Attack: +25 \tHealth: +100"
 		+ "\nEnter option number to select \tType 4 to leave");
 		
 		//Scanner scan = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class The_Cave implements Locations{
 					System.out.println("Cannot afford");
 				}
 				else {
-				p.attack_level += 20;
+				p.attack_level += 50;
 				p.health_level += 50;
 				p.coins -= 15;
 				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
@@ -70,8 +70,8 @@ public class The_Cave implements Locations{
 					System.out.println("Cannot afford");
 				}
 				else {
-				p.bonus_attack += 15;
-				p.health_level += 70;
+				p.bonus_attack += 30;
+				p.health_level += 75;
 				p.coins -= 25;
 				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
 				}
@@ -82,7 +82,7 @@ public class The_Cave implements Locations{
 					System.out.println("Cannot afford");
 				}
 				else {
-				p.attack_level += 10;
+				p.attack_level += 25;
 				p.health_level += 100;
 				p.coins -= 35;
 				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
