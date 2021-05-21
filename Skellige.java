@@ -239,6 +239,10 @@ public class Skellige implements Locations{
 			}
 			else if(eF.done == true) {
 				//won against Eredin
+				System.out.println("\n "+ p.name+ ": (pant) Said you had something to tell me. (pant)");
+				System.out.println("\n Eredin: (pant) Not yet! I said I'd say it as you die. "
+						+ " Don't get too cocky. You haven't beat me! "
+						+ "\n Eredin charges again!");
 				//initiate AngryEredin
 				UserFight uF2 = new UserFight(p,ae,wT);
 				EnemyFight aeF = new EnemyFight(p,ae);

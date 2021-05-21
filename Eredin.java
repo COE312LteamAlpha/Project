@@ -29,7 +29,10 @@ public class Eredin extends Characters implements States{
 	@Override
 	public void dialogueDefeat(String s) {
 		// TODO Auto-generated method stub
-		System.out.println("Impossible...! I've been bested by your worthless feints and pirouettes...How pathetic..");
+		System.out.println("Eredin: (laughs) You're skilled Witcher! More so than I'd hoped! I can't lie "
+				+ "I'm quite enjoying this! But all of this will be for nothing!!");
+		System.out.println("\n Eredin's face covered in blood seemed to grow even more demonic as he seemed "
+				+ "to have emptied his mind except for one single thought, and that was to kill the witcher.");
 		
 	}
 

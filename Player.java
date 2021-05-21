@@ -45,9 +45,12 @@ public class Player extends Characters{
 		{
 			System.out.println(name + ": Seemed like I lasted long enough.");
 		}
-		if(s.equals("mountain")) {}
+		if(s.equals("mountain")) {
+			System.out.println("You slash Caranthir across his chest and leave a gaping fatal wound "
+					+ "and finally thurst your blade right through his chest to end the battle!");
+		}
 		if(s.equals("skellige")) {
-			System.out.println(name + ": What?...I should've expected this.");
+			//System.out.println(name + ": What?...I should've expected this.");
 		}
 		
 		
