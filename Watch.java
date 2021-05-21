@@ -24,7 +24,6 @@ public class Watch extends ConcreteSubject implements Runnable{
 				if(tm==true) {
 				if(timer==0) {
 					System.out.println("Time's up! Battle is over and you lose!");
-					t.stop();
 				}
 				timer--;
 				Thread.sleep(1000);

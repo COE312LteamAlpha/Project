@@ -168,7 +168,37 @@ public class The_Cave implements Locations{
 		
 		return false;
 	}
-
+	public void map() {
+		System.out.println("\r\n"
+				+ "\r\n"
+				+ "                              ▲\r\n"
+				+ "         ┌────────────────────┬─────────────────────┐\r\n"
+				+ "         │                    │                     │\r\n"
+				+ "         │            To The Ice Mountain           │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │ Healer                            Armourer\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         │                                          │\r\n"
+				+ "         └──────────────────────────────────────────┘\r\n"
+				+ "                    Map of The Cave\r\n"
+				+ "\r\n"
+				+ "\r\n"
+				+ "");
+	}
 	@Override
 	public void lookAround() {
 		// TODO Auto-generated method stub

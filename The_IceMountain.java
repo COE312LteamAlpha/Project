@@ -188,7 +188,37 @@ public class The_IceMountain implements Locations {
 				+ " And to theres an odd force to the front" + "\n\t (You can go right, left, back or forth)");
 		//goTo(scan.next());
 	}
-
+	public void map() {
+		System.out.println("\r\n"
+				+ "                             ▲\r\n"
+				+ "                             │\r\n"
+				+ "        ┌────────────────────┴─────────────────────┐\r\n"
+				+ "        │                To Skellige               │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │ Healer                              Armourer\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │            Map of The Ice Mountain       │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │                                          │\r\n"
+				+ "        │               To The Cave                │\r\n"
+				+ "        └───────────────────┬──────────────────────┘\r\n"
+				+ "                            │\r\n"
+				+ "                            ▼\r\n"
+				+ "\r\n"
+				+ "");
+	}
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub

@@ -169,6 +169,35 @@ public class Skellige implements Locations{
 				+ " And to theres an odd force to the front" + "\n\t (You can go right, left, forth or back)");
 
 	}
+	public void map() {
+		System.out.println("\n"
+				+ "              Map of Skellige\n"
+				+ " ┌──────────────────────────────────────────┐\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │ Healer                              Armourer\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │                                          │\n"
+				+ " │             To The Ice Mountain          │\n"
+				+ " └───────────────────┬──────────────────────┘\n"
+				+ "                     │\n"
+				+ "                     ▼");
+	}
+	
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub

@@ -54,7 +54,7 @@ public class Driver {
 		System.out.println("\n Now traveling to The Cave");
 		The_Cave.curLoc = "The Cave";
 		tC.lookAround();
-		String[] commands = {"right","left","forth","back","quit","stats","use"};
+		String[] commands = {"right","left","forth","back","quit","stats","use","map"};
 		while(true) {
 			String entry1=sc.next();
 			boolean checkCom = false;
@@ -78,6 +78,16 @@ public class Driver {
 					for (int i = 0; i < player.potionsAv.size(); i++) {
 					      System.out.println(player.potionsAv.get(i));
 					    }
+				}
+				else if(entry1.equals("map")) {
+					switch(The_Cave.curLoc) {
+					case "The Cave":
+						tC.map();break;
+					case "The Ice Mountain":
+						tIM.map();break;
+					case "Skellige":
+						sK.map();break;
+					}
 				}
 				else {
 				switch(The_Cave.curLoc) {
