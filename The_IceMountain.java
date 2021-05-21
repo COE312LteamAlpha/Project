@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 import java.util.Scanner;
 
@@ -52,7 +52,7 @@ public class The_IceMountain implements Locations {
 					p.coins -= 15;
 					System.out.println("Now you have the ability to turn invisble for 30 seconds");
 					p.potionsAv.add("Invisibility Potion");
-					System.out.println("Coins left: " + p.coins);
+					System.out.println("Coins left: " + p.coins + "\t Enter 6 to leave");
 				}
 			}
 			else if(option == 2) {
@@ -65,7 +65,7 @@ public class The_IceMountain implements Locations {
 					p.coins -= 25;
 					System.out.println("Now you have the ability to become fast for 40 seconds");
 					p.potionsAv.add("Speed Potion");
-					System.out.println("Coins left: " + p.coins);
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 			}
 
@@ -79,7 +79,7 @@ public class The_IceMountain implements Locations {
 					p.coins -= 35;
 					System.out.println("Now you have the ability to restore half your health");
 					p.potionsAv.add("Half Heal Potion");
-					System.out.println("Coins left: " + p.coins);
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 			}
 			else if(option == 4) {
@@ -92,7 +92,7 @@ public class The_IceMountain implements Locations {
 					p.coins -= 50;
 					System.out.println("Now you have the ability to restore your full health");
 					p.potionsAv.add("Full Health Potion");
-					System.out.println("Coins left: " + p.coins);
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 			}
 			else if(option == 5) {
@@ -106,7 +106,7 @@ public class The_IceMountain implements Locations {
 					p.coins -= 65;
 					System.out.println("Now you have the ability to upsize to giant (name of character controlled by player?)");
 					p.potionsAv.add("Giant Size Potion");
-					System.out.println("Coins left: " + p.coins);
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 			}
 			else if(option==6) {
@@ -116,7 +116,8 @@ public class The_IceMountain implements Locations {
 				System.out.println("Enter from the given options:");
 			}
 		}
-		System.out.println("Now leaving the Chemist");
+		this.currMaxHP = p.health_level;
+		System.out.println("Now leaving the Chemist\tStats");p.pStats();
 	}
 
 	@Override
@@ -124,41 +125,41 @@ public class The_IceMountain implements Locations {
 		// TODO Auto-generated method stub
 		System.out.println("Here you can interact with the trader!\nThe Trader can upgrade weapons or armours, fully developed potions/spells");
 		System.out.println("You can upgrade weapons or armours, fully developed potions/spells here: "
-				+ "\n1. Griffin Gear Upgrade Set - 7 coins" + "\t Attack: +5 \tHealth: +12"
-				+ "\n2. Manticore Gear Upgrade Set - 9 coins \t Spell bonus: +12 \tHealth: +7"
-				+ "\n3. Ursine Gear Upgrade Set - 15 coins \t Attack: +15 \tHealth: +15"
-				+ "\n4. Sword(10% Damage) - 20 coins"
-				+ "\n5. Two-handed Sword (5% Damage) - 10 coins"
+				+ "\n1. Griffin Gear Upgrade Set - 30 coins" + "\t Attack: +50 \tHealth: +40"
+				+ "\n2. Manticore Gear Upgrade Set - 35 coins \t Spell bonus: +50 \tHealth: +70"
+				+ "\n3. Ursine Gear Upgrade Set - 50 coins \t Attack: +110 \tHealth: +75"
+				+ "\n4. Sword(25% Damage) - 25 coins"
+				+ "\n5. Two-handed Sword (50% Damage) - 50 coins"
 				+ "\nEnter option number to select \tType 6 to leave:");
 		while(true) {
 			int option = scan.nextInt();
 				if(option == 1) {
-					p.attack_level += 5;
-					p.health_level += 12;
-					p.coins -= 7;
-					System.out.println("Coins left: " + p.coins);
+					p.attack_level += 50;
+					p.health_level += 40;
+					p.coins -= 30;
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 2) {
 					p.bonus_attack += 12;
 					p.health_level += 7;
-					p.coins -= 9;
-					System.out.println("Coins left: " + p.coins);
+					p.coins -= 35;
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 3) {
-					p.attack_level += 15;
-					p.health_level += 15;
-					p.coins -= 15;
-					System.out.println("Coins left: " + p.coins);
+					p.attack_level += 110;
+					p.health_level += 75;
+					p.coins -= 50;
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 4) {
-					p.attack_level += p.attack_level*0.1;
-					p.coins -= 20;
-					System.out.println("Coins left: " + p.coins);
+					p.attack_level += p.attack_level*0.25;
+					p.coins -= 25;
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 5) {
-					p.attack_level += p.attack_level*0.05;
-					p.coins -= 10;
-					System.out.println("Coins left: " + p.coins);
+					p.attack_level += p.attack_level*0.5;
+					p.coins -= 50;
+					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option==6) {
 					break;
@@ -168,7 +169,7 @@ public class The_IceMountain implements Locations {
 				}
 		}
 
-		System.out.println("Now leaving the Trader");
+		System.out.println("Now leaving the Trader\tStats"); p.pStats();
 		this.currMaxHP = p.health_level;
 		//create a variable in the UI which keeps the player's location
 	}
@@ -192,10 +193,18 @@ public class The_IceMountain implements Locations {
 	public void goForth() {
 		// TODO Auto-generated method stub
 		int pHP = p.health_level;
+		int eHP = c.health_level;
 		if(c.isAlive == true){
 			System.out.println("Here's Caranthir!");
-			p.dialogueIntro(The_Cave.curLoc);
-			c.dialogueIntro(The_Cave.curLoc);
+			p.dialogueIntro("mountain");
+			c.dialogueIntro("mountain");
+			
+			System.out.println("Type begin to fight!!");
+			String fBegin="";
+			while(!fBegin.equals("begin")) {
+				fBegin = scan.next();
+			}
+			
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,c,wT);
 		EnemyFight eF = new EnemyFight(p,c);
@@ -209,19 +218,21 @@ public class The_IceMountain implements Locations {
 		}
 		if(uF.done == true) {
 			//lost to Caranthir
-			c.dialogueVictory(null);
-			p.dialogueDefeat(null);
-			p.health_level = pHP;
+			c.dialogueVictory("mountain");
+			p.dialogueDefeat("mountain");
+			p.health_level = this.currMaxHP;
+			c.health_level = eHP;
 		}
 		else if(eF.done == true) {
 			//won against Caranthir
 			p.health_level+= 15;
 			p.attack_level+= 15;
 			p.coins+= 100;
-			p.dialogueVictory(null);
-			c.dialogueDefeat(null);
+			p.dialogueVictory("mountain");
+			c.dialogueDefeat("mountain");
 			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
+			SkelligeDraw();
 			The_Cave.curLoc = "Skellige";
 			sK.lookAround();
 		}
@@ -230,37 +241,40 @@ public class The_IceMountain implements Locations {
 			//goto location 3
 			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
-			System.out.println("            .        +          .      .          .\r\n"
-					+ "     .            _        .                    .\r\n"
-					+ "  ,              /;-._,-.____        ,-----.__\r\n"
-					+ " ((        .    (_:#::_.:::. `-._   /:, /-._, `._,\r\n"
-					+ "  `                 \\   _|`\"=:_::.`.);  \\ __/ /\r\n"
-					+ "                      ,    `./  \\:. `.   )==-'  .\r\n"
-					+ "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\r\n"
-					+ ".           \\/:/`-' , ,\\ '` ` `   ): , /_  -o\r\n"
-					+ "       .    /:+- - + +- : :- + + -:'  /(o-) \\)     .\r\n"
-					+ "  .      ,=':  \\    ` `/` ' , , ,:' `'--\".--\"---._/`7\r\n"
-					+ "   `.   (    \\: \\,-._` ` + '\\, ,\"   _,--._,---\":.__/\r\n"
-					+ "              \\:  `  X` _| _,\\/'   .-'\r\n"
-					+ ".               \":._:`\\____  /:'  /      .           .\r\n"
-					+ "                    \\::.  :\\/:'  /              +\r\n"
-					+ "   .                 `.:.  /:'  }      .\r\n"
-					+ "           .           ):_(:;   \\           .\r\n"
-					+ "                      /:. _/ ,  |\r\n"
-					+ "                   . (|::.     ,`                  .\r\n"
-					+ "     .                |::.    {\\\r\n"
-					+ "                      |::.\\  \\ `.\r\n"
-					+ "                      |:::(\\    |\r\n"
-					+ "              O       |:::/{ }  |                  (o\r\n"
-					+ "               )  ___/#\\::`/ (O \"==._____   O, (O  /`\r\n"
-					+ "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\r\n"
-					+ "dew   ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~\r\n"
-					+ "\r\n"
-					+ "------------------------------------------------\r\n"
-					+ "");
+			SkelligeDraw();
 			The_Cave.curLoc = "Skellige";
 			sK.lookAround();
 		}
+	}
+	void SkelligeDraw() {
+		System.out.println("            .        +          .      .          .\r\n"
+				+ "     .            _        .                    .\r\n"
+				+ "  ,              /;-._,-.____        ,-----.__\r\n"
+				+ " ((        .    (_:#::_.:::. `-._   /:, /-._, `._,\r\n"
+				+ "  `                 \\   _|`\"=:_::.`.);  \\ __/ /\r\n"
+				+ "                      ,    `./  \\:. `.   )==-'  .\r\n"
+				+ "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           .\r\n"
+				+ ".           \\/:/`-' , ,\\ '` ` `   ): , /_  -o\r\n"
+				+ "       .    /:+- - + +- : :- + + -:'  /(o-) \\)     .\r\n"
+				+ "  .      ,=':  \\    ` `/` ' , , ,:' `'--\".--\"---._/`7\r\n"
+				+ "   `.   (    \\: \\,-._` ` + '\\, ,\"   _,--._,---\":.__/\r\n"
+				+ "              \\:  `  X` _| _,\\/'   .-'\r\n"
+				+ ".               \":._:`\\____  /:'  /      .           .\r\n"
+				+ "                    \\::.  :\\/:'  /              +\r\n"
+				+ "   .                 `.:.  /:'  }      .\r\n"
+				+ "           .           ):_(:;   \\           .\r\n"
+				+ "                      /:. _/ ,  |\r\n"
+				+ "                   . (|::.     ,`                  .\r\n"
+				+ "     .                |::.    {\\\r\n"
+				+ "                      |::.\\  \\ `.\r\n"
+				+ "                      |:::(\\    |\r\n"
+				+ "              O       |:::/{ }  |                  (o\r\n"
+				+ "               )  ___/#\\::`/ (O \"==._____   O, (O  /`\r\n"
+				+ "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~\r\n"
+				+ "dew   ~~~~~~~~~~~~~~~~~~~~~~~\\\\W~~~~~~~~~~~~\\|/~~\r\n"
+				+ "\r\n"
+				+ "------------------------------------------------\r\n"
+				+ "");
 	}
 	@Override
 	public void goBack() {

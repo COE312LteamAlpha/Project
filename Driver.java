@@ -1,11 +1,11 @@
-package Project;
+package proj1;
 
 import java.util.Scanner;
 
 
+
 public class Driver {
 
-	static String curLoc=null;
 
 	public static void main(String[] args) {
 
@@ -50,22 +50,9 @@ public class Driver {
 				+ "  (#%#%/ ,%%%%%/#%%% /%########% &&%*%  \r\n"
 				+ "          #%#//####*  #######((% (%%%(  \r\n"
 				+ "          #######%#    ######,#% #%#((");
-		//System.out.println("Goto \nOptions:Kaer Morhen\tThe Cave\tThe Ice Mountain\tSkellige");
-		//String enter = sc.nextLine();
-		//enter = enter.toLowerCase();
-		//System.out.println(enter);
-		//if(enter.equals("the cave")) {			}
-		/*else if(enter.equalsIgnoreCase("kaer morhen")) {
-				System.out.println("Now traveling to Kaer Morhen");
-				curLoc = "Kaer Morhen";
-				kM.lookAround();
-			}
-			else if(enter.equalsIgnoreCase("the ice mountain") || enter.equalsIgnoreCase("Skellige")) {
-				//if-else if location is unlocked
-				System.out.println("Cannot travel there yet!");
-			}*/
+		
 		System.out.println("\n Now traveling to The Cave");
-		curLoc = "The Cave";
+		The_Cave.curLoc = "The Cave";
 		tC.lookAround();
 		String[] commands = {"right","left","forth","back","quit","stats","use"};
 		while(true) {
@@ -93,7 +80,7 @@ public class Driver {
 					    }
 				}
 				else {
-				switch(curLoc) {
+				switch(The_Cave.curLoc) {
 				case "The Cave":
 					tC.goTo(entry1);break;
 				case "The Ice Mountain":

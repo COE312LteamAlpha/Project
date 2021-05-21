@@ -1,8 +1,8 @@
-package Project;
+package proj1;
 
 public class BattleDuo{
 
-	String p1,p2;
+	//String p1,p2;
 	Player p;
 	Characters boss;
 	TCP_C tcp;

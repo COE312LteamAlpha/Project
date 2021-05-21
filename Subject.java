@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 public interface Subject {
 

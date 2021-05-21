@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 import java.util.Random;
 
@@ -62,6 +62,7 @@ public class UserFight extends ConcreteObserver implements Runnable {
 			}
 			else if(boss.health_level <= 0)
 			{
+				p.coins+= 75;
 				//System.out.println("Enemy lose!");//gotta improve this
 				boss.isAlive=false;
 				done = true;

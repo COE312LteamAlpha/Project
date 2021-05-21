@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 import java.util.Scanner;
 
@@ -47,11 +47,12 @@ public class Skellige implements Locations{
 		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +20 \tHealth: +50"
 		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +15 \tHealth: +75"
 		+ "\n3. Ursine Gear Set - 35 coins \t Attack: +10 \tHealth: +100"
-		+ "\nEnter option number to select \tType exit to leave");
+		+ "\nEnter option number to select \tType 4 to leave");
 		
-		//Scanner scan = new Scanner(System.in);
-		while(!scan.next().equals("exit")) {
-			if(scan.nextInt() == 1) {
+		int option = scan.nextInt();
+		while(true) {
+			
+			if(option == 1) {
 				if(p.coins - 15 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -60,10 +61,10 @@ public class Skellige implements Locations{
 				p.attack_level += 20;
 				p.health_level += 50;
 				p.coins -= 15;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins+ "\t Enter exit to leave");
 				}
 			}
-			else if(scan.nextInt() == 2) {
+			else if(option == 2) {
 				if(p.coins - 25 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -72,10 +73,10 @@ public class Skellige implements Locations{
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins+ "\t Enter exit to leave");
 				}
 			}
-			else if(scan.nextInt() == 3) {
+			else if(option == 3) {
 				if(p.coins - 35 < 0)
 				{
 					System.out.println("Cannot afford");
@@ -84,17 +85,19 @@ public class Skellige implements Locations{
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins+ "\t Enter exit to leave");
 				}
+			}
+			else if (option == 4) {
+				break;
 			}
 			else {
 				System.out.println("Enter from the given options");
 			}
 		}
+		System.out.println("Now leaving the Armourer" + "\tStats: "); p.pStats();
 		this.currMaxHP = p.health_level;
-		//create a variable in the UI which keeps the player's location
-		
-		
+
 	}
 
 	@Override
@@ -128,7 +131,7 @@ public class Skellige implements Locations{
 						else {
 						p.health_level += (currMaxHP/2); 
 						p.coins -= 5;
-						System.out.println("Coins left: " + p.coins);
+						System.out.println("Coins left: " + p.coins + "\t Enter exit to leave");
 						}
 					}
 					else if(option.equals("full")) {
@@ -139,7 +142,7 @@ public class Skellige implements Locations{
 						else {
 						p.health_level += currMaxHP; 
 						p.coins -= 10;
-						System.out.println("Coins left: " + p.coins);
+						System.out.println("Coins left: " + p.coins + "\t Enter exit to leave");
 						}
 					}
 					else if(option.equals("exit")) {
@@ -149,7 +152,7 @@ public class Skellige implements Locations{
 						System.out.println("Enter from the given options");
 					}
 				}
-				System.out.println("Now leaving the Healer");
+				System.out.println("Now leaving the Healer \tStats"); p.pStats();
 	}
 
 	@Override
@@ -161,14 +164,15 @@ public class Skellige implements Locations{
 	public void lookAround() {
 		// TODO Auto-generated method stub
 		System.out.println("welcome to Skellige");
-
-		goTo(scan.next());
+		System.out.println("To the right there's an Armourer, and to the left theres a Healer."
+				+ " And to theres an odd force to the front" + "\n\t (You can go right, left or forth)");
 
 	}
 	@Override
 	public void goForth() {
 		// TODO Auto-generated method stub
 		int pHP = p.health_level;
+		int eHP = er.health_level;
 		if(er.isAlive == true){
 			System.out.println("The final obstacle between the protection of countless human lives and "
 					+"\n the safety of the princess lies before you...the commander himself, Eredin. His "
@@ -178,6 +182,13 @@ public class Skellige implements Locations{
 					+"\n faced thus far. This was it! The final battle!");
 			p.dialogueIntro(The_Cave.curLoc);
 			er.dialogueIntro(The_Cave.curLoc);
+			
+			System.out.println("Type begin to fight!!");
+			String fBegin="";
+			while(!fBegin.equals("begin")) {
+				fBegin = scan.next();
+			}
+			
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,er,wT);
 		EnemyFight eF = new EnemyFight(p,er);
@@ -194,6 +205,7 @@ public class Skellige implements Locations{
 			er.dialogueVictory(curLoc);
 			p.dialogueDefeat(curLoc);
 			p.health_level = pHP;
+			er.health_level = eHP;
 		}
 		else if(eF.done == true) {
 			//won against Eredin
@@ -217,6 +229,7 @@ public class Skellige implements Locations{
 		// TODO Auto-generated method stub
 		System.out.println("now entering The Ice Mountain");
 		The_IceMountain iM = new The_IceMountain(p);
+		The_Cave.The_IceMountainDraw();
 		The_Cave.curLoc="The Ice Mountain";
 		iM.lookAround();
 	}

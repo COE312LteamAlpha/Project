@@ -1,9 +1,9 @@
-package Project;
+package proj1;
 
 public class Nithral extends Characters{
 	
 	public Nithral() {
-		this.health_level = 500;
+		this.health_level = 400;
 		this.attack_level = 50;
 		this.bonus_attack = 10;
 		this.isAlive=true;

@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 import java.util.ArrayList;
 
@@ -19,19 +19,23 @@ public class Player extends Characters{
 	}
 
 
+	public void pStats() {
+		System.out.print("Name: " + this.name +"\tCoins:"+this.coins+"\nPlayer stats: "
+				+"Attack level: "+ this.attack_level + "\tHealth level: " + this.health_level + "\tSpell Attack: " + this.bonus_attack);
+	}
 	@Override
 	public void dialogueIntro(String s) {
 		// TODO Auto-generated method stub 
 		if(s.equals("cave"))
 		{
-			System.out.println(name + ": Step aside. You can't beat me.");
+			//System.out.println(this.name + ": Step aside. You can't beat me.");
 		}
 		if(s.equals("mountain")) {}
 		if(s.equals("skellige")) {
 			System.out.println(name + ": .....");
 		}
 		
-		
+		System.out.println(this.name + ": Step aside. You can't beat me.");
 	}
 
 	@Override

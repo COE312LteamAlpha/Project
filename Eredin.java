@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 public class Eredin extends Characters{
 
@@ -35,3 +35,4 @@ public class Eredin extends Characters{
 	
 
 }
+

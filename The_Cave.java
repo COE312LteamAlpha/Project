@@ -1,4 +1,4 @@
-package Project;
+package proj1;
 
 import java.util.Scanner;
 
@@ -61,7 +61,7 @@ public class The_Cave implements Locations{
 				p.attack_level += 20;
 				p.health_level += 50;
 				p.coins -= 15;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
 				}
 			}
 			else if(option == 2) {
@@ -73,7 +73,7 @@ public class The_Cave implements Locations{
 				p.bonus_attack += 15;
 				p.health_level += 70;
 				p.coins -= 25;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
 				}
 			}
 			else if(option == 3) {
@@ -85,17 +85,17 @@ public class The_Cave implements Locations{
 				p.attack_level += 10;
 				p.health_level += 100;
 				p.coins -= 35;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins + "\t Enter 4 to leave");
 				}
 			}
 			else if(option == 4) {
 				break;
 			}
 			else {
-				System.out.println("Enter from the given options");
+				System.out.println("Enter from the given options" + "\t Enter 4 to leave");
 			}
 		}
-		System.out.println("Now leaving the Armourer");
+		System.out.println("Now leaving the Armourer\tStats"); p.pStats();
 		this.currMaxHP = p.health_level;
 		//create a variable in the UI which keeps the player's location
 		
@@ -133,7 +133,7 @@ public class The_Cave implements Locations{
 				else {
 				p.health_level += (currMaxHP/2); 
 				p.coins -= 5;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins + "\t Enter exit to leave");
 				}
 			}
 			else if(option.equals("full")) {
@@ -144,7 +144,7 @@ public class The_Cave implements Locations{
 				else {
 				p.health_level += currMaxHP; 
 				p.coins -= 10;
-				System.out.println("Coins left: " + p.coins);
+				System.out.println("Coins left: " + p.coins + "\t Enter exit to leave");
 				}
 			}
 			else if(option.equals("exit")) {
@@ -154,7 +154,8 @@ public class The_Cave implements Locations{
 				System.out.println("Enter from the given options");
 			}
 		}
-		System.out.println("Now leaving the Healer");
+		this.currMaxHP = p.health_level;
+		System.out.println("Now leaving the Healer\tStats"); p.pStats();
 		//create a variable in the UI which keeps the player's location
 	}
 
@@ -179,6 +180,7 @@ public class The_Cave implements Locations{
 	public void goForth() {
 		// TODO Auto-generated method stub
 		int pHP = p.health_level;
+		int eHP = n.health_level;
 		if(n.isAlive == true){
 			System.out.println("Deep into the cave, you see the first general you must defeat on your"
 					+"\n journey. You must eliminate everyone who leads the elven army. With your final"
@@ -191,10 +193,15 @@ public class The_Cave implements Locations{
 					+"\n and assume your battle stances.");
 			p.dialogueIntro(curLoc);
 			n.dialogueIntro(curLoc);
+			System.out.println("Type begin to fight!!");
+			String fBegin="";
+			while(!fBegin.equals("begin")) {
+				fBegin = scan.next();
+			}
 			Watch wT = new Watch(p);
 		UserFight uF = new UserFight(p,n,wT);
 		EnemyFight eF = new EnemyFight(p,n);
-		p.health_level = currMaxHP;
+		p.health_level = this.currMaxHP;
 		try {
 			uF.get_thread().join();
 			eF.get_thread().join();
@@ -204,25 +211,22 @@ public class The_Cave implements Locations{
 		}
 		if(uF.done == true) {
 			//lost to Nithral
-			p.health_level = pHP;
-			/*try {
-				wT.wait(10000000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			n.dialogueVictory(curLoc);
-			p.dialogueDefeat(curLoc);
+			p.health_level = this.currMaxHP;
+			n.health_level = eHP;
+			
+			n.dialogueVictory("cave");
+			p.dialogueDefeat("cave");
 		}
 		else if(eF.done == true) {
 			//won against Nithral
-			p.health_level = pHP;
+			p.health_level = this.currMaxHP;
 			p.health_level+= 10;
 			p.attack_level+= 10;
 			p.coins+= 75;
-			p.dialogueVictory(curLoc);
-			n.dialogueDefeat(curLoc);
+			p.dialogueVictory("cave");
+			n.dialogueDefeat("cave");
 			System.out.println("now entering The Ice Mountain");
+			The_IceMountainDraw();
 			curLoc = "The Ice Mountain";
 			The_IceMountain iM = new The_IceMountain(p);
 			iM.lookAround();
@@ -232,26 +236,28 @@ public class The_Cave implements Locations{
 		else {
 			//goto location 2
 			System.out.println("now entering The Ice Mountain");
-			System.out.println(" .                  .-.    .  _   *     _   .\r\n"
-					+ "           *          /   \\     ((       _/ \\       *    .\r\n"
-					+ "         _    .   .--'\\/\\_ \\     `      /    \\  *    ___\r\n"
-					+ "     *  / \\_    _/ ^      \\/\\'__        /\\/\\  /\\  __/   \\ *\r\n"
-					+ "       /    \\  /    .'   _/  /  \\  *' /    \\/  \\/ .`'\\_/\\   .\r\n"
-					+ "  .   /\\/\\  /\\/ :' __  ^/  ^/    `--./.'  ^  `-.\\ _    _:\\ _\r\n"
-					+ "     /    \\/  \\  _/  \\-' __/.' ^ _   \\_   .'\\   _/ \\ .  __/ \\\r\n"
-					+ "   /\\  .-   `. \\/     \\ / -.   _/ \\ -. `_/   \\ /    `._/  ^  \\\r\n"
-					+ "  /  `-.__ ^   / .-'.--'    . /    `--./ .-'  `-.  `-. `.  -  `.\r\n"
-					+ "@/        `.  / /      `-.   /  .-'   / .   .'   \\    \\  \\  .-  \\%\r\n"
-					+ "@&8jgs@@%% @)&@&(88&@.-_=_-=_-=_-=_-=_.8@% &@&&8(8%@%8)(8@%8 8%@)%\r\n"
-					+ "@88:::&(&8&&8:::::%&`.~-_~~-~~_~-~_~-~~=.'@(&%::::%@8&8)::&#@8::::\r\n"
-					+ "`::::::8%@@%:::::@%&8:`.=~~-.~~-.~~=..~'8::::::::&@8:::::&8:::::'\r\n"
-					+ " `::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.'");
+			The_IceMountainDraw();
 			curLoc = "The Ice Mountain";
 			The_IceMountain iM = new The_IceMountain(p);
 			iM.lookAround();
 		}
 	}
-
+	static void The_IceMountainDraw() {
+		System.out.println(" .                  .-.    .  _   *     _   .\r\n"
+				+ "           *          /   \\     ((       _/ \\       *    .\r\n"
+				+ "         _    .   .--'\\/\\_ \\     `      /    \\  *    ___\r\n"
+				+ "     *  / \\_    _/ ^      \\/\\'__        /\\/\\  /\\  __/   \\ *\r\n"
+				+ "       /    \\  /    .'   _/  /  \\  *' /    \\/  \\/ .`'\\_/\\   .\r\n"
+				+ "  .   /\\/\\  /\\/ :' __  ^/  ^/    `--./.'  ^  `-.\\ _    _:\\ _\r\n"
+				+ "     /    \\/  \\  _/  \\-' __/.' ^ _   \\_   .'\\   _/ \\ .  __/ \\\r\n"
+				+ "   /\\  .-   `. \\/     \\ / -.   _/ \\ -. `_/   \\ /    `._/  ^  \\\r\n"
+				+ "  /  `-.__ ^   / .-'.--'    . /    `--./ .-'  `-.  `-. `.  -  `.\r\n"
+				+ "@/        `.  / /      `-.   /  .-'   / .   .'   \\    \\  \\  .-  \\%\r\n"
+				+ "@&8jgs@@%% @)&@&(88&@.-_=_-=_-=_-=_-=_.8@% &@&&8(8%@%8)(8@%8 8%@)%\r\n"
+				+ "@88:::&(&8&&8:::::%&`.~-_~~-~~_~-~_~-~~=.'@(&%::::%@8&8)::&#@8::::\r\n"
+				+ "`::::::8%@@%:::::@%&8:`.=~~-.~~-.~~=..~'8::::::::&@8:::::&8:::::'\r\n"
+				+ " `::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.'");
+	}
 	@Override
 	public void goBack() {
 		// TODO Auto-generated method stub
