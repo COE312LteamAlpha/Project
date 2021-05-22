@@ -53,9 +53,9 @@ public class Skellige implements Locations{
 				+ "\n3. Ursine Gear Set - 35 coins \t Attack: +25 \tHealth: +100"
 				+ "\nEnter option number to select \tType 4 to leave");
 
-		int option = scan.nextInt();
+		
 		while(true) {
-
+			int option = scan.nextInt();
 			if(option == 1) {
 				if(p.coins - 15 < 0)
 				{
