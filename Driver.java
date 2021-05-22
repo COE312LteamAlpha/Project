@@ -24,8 +24,14 @@ public class Driver {
 				+ "\n elves who threaten to" +
 				" wipe out humanity unless they submit into sacrificing their royal elder-blooded princess "
 				+ "\n for the selfish motives of the elven race." + 
-				"Having known the princess personally and caring for her safety, "
+				"Having known the princess personally and actually being her swordsmanship mentor, you've come to know and care"
+				+ "\n for her quite well. Concerned for her safety, "
 				+ "\n you agree to the mission handed out to you by the king.");
+		System.out.println("\n An ordinary Witcher might've chosen to stay out of this if the "
+				+ "\n pay was not high enough, but not our hero. A compassionate, stoic but "
+				+ "\n resilient warrior who feels like he has a duty protecting other people due to his strength"
+				+ "\n is just what the people need in this time of turmoil. Our hero is onwards to his journey towards a nearby"
+				+ "\n cave where there have been reports of sighting a elven battalion. Humnity's counter attack begins now!");
 		System.out.println("*                               \r\n"
 				+ "       .(/        */%#**                \r\n"
 				+ "   *&     %       ,/(/*,                \r\n"

@@ -28,14 +28,19 @@ public class Player extends Characters{
 		// TODO Auto-generated method stub 
 		if(s.equals("cave"))
 		{
-			//System.out.println(this.name + ": Step aside. You can't beat me.");
+			System.out.println(this.name + ": Step aside. You can't beat me.");
 		}
-		if(s.equals("mountain")) {}
+		if(s.equals("mountain")) {
+			System.out.println(this.name + ": I see you've been expecting me. I won't disappoint");
+			System.out.println("\n All you must know is that I won't stop until I kill your leader."
+					+ "\n You won't be alive to tell him that yourself though. ");
+			
+		}
 		if(s.equals("skellige")) {
 			System.out.println(name + ": .....");
 		}
 		
-		System.out.println(this.name + ": Step aside. You can't beat me.");
+		
 	}
 
 	@Override
@@ -46,11 +51,12 @@ public class Player extends Characters{
 			System.out.println(name + ": Seemed like I lasted long enough.");
 		}
 		if(s.equals("mountain")) {
+			System.out.println(this.name + ": DIE!!");
 			System.out.println("You slash Caranthir across his chest and leave a gaping fatal wound "
-					+ "and finally thurst your blade right through his chest to end the battle!");
+					+ "\n and finally thurst your blade right through his chest to end the battle!");
 		}
 		if(s.equals("skellige")) {
-			//System.out.println(name + ": What?...I should've expected this.");
+			System.out.println(name + ": What did you have to tell me?..");
 		}
 		
 		
@@ -61,13 +67,16 @@ public class Player extends Characters{
 		// TODO Auto-generated method stub
 		if(s.equals("cave"))
 		{
-			System.out.println("YOU HAVE DIED.");
+			System.out.println("You lose, but you managed to get away. Get stronger and \"\r\n"
+					+ "					+ \"challenge your opponent again!");
 		}
 		if(s.equals("mountain")) {
-			System.out.println("YOU HAVE DIED");
+			System.out.println("You lose, but you managed to get away. Get stronger and \"\r\n"
+					+ "					+ \"challenge your opponent again!");
 		}
 		if(s.equals("skellige")) {
-			System.out.println("YOU HAVE DIED.");
+			System.out.println("You lose, but you managed to get away. Get stronger and \"\r\n"
+					+ "					+ \"challenge your opponent again!");
 		}
 		
 	}

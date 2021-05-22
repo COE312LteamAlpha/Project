@@ -32,9 +32,10 @@ public class AngryEredin extends Characters implements States{
 		// TODO Auto-generated method stub
 		System.out.println("Eredin: Impossible...! I've been bested by your worthless feints and pirouettes...How pathetic..");
 		System.out.println("The King sent you on a suicide mission and ran away with the "
-				+ "darling princess all on his own...My soldiers saw it and reported it to me..");
+				+ "\n darling princess all on his own...My soldiers saw it and reported it to me..");
 		System.out.println("\n The last of the light in Eredin's eyes faded as he passed with a "
-				+ "expressionless face");
+				+ "\n expressionless face \n");
+		
 		
 	}
 

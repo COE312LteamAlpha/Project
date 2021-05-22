@@ -262,6 +262,17 @@ public class Skellige implements Locations{
 					System.out.println("The winner of this battle seemed to have been decided! But Eredin refused"
 							+"\n to lie down, pushing himself to his absolute limit to take one last stand! "
 							+"\n But he ultimately succumbed to his wounds and falls on his back.");
+					System.out.println("\n It would seem that our protagonist was sent on a mission simply to save time "
+							+ "\n for the king and his daughter princess to make an escape. Our protagonist however, "
+							+ "\n realised he had a duty to fulfill as humanity's strongest fighter. Whether the money was"
+							+ "\n involved or not...he has protected his people. "
+							+ "\n At this moment, he felt no particular animosity towards the king. All he had was the "
+							+ "\n satisfaction of a job well done. While he thought about going after the king for his"
+							+ "\n recompense, he felt that he would be content going back to slaying the neighborhood "
+							+ "\n monsters for common folk for measly pay. Killing monsters and beasts, as he does best.");
+					System.out.println("\n There would always be more to our hero's story, but we leave the interpretation"
+							+ "\n of what happens next....up to the player, YOU.");
+					System.out.println("\n THE END");
 					p.dialogueVictory("skellige");
 					er.dialogueDefeat("skellige");
 					//add ending story
