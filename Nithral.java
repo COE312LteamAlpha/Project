@@ -7,8 +7,10 @@ public class Nithral extends Characters{
 		this.attack_level = 50;
 		this.bonus_attack = 10;
 		this.isAlive=true;
+		a=new AttackEnemy();
 	}
 	
+	//a = new AttackPlayer();
 	public void dialogueIntro(String s) {
 		System.out.println("Nithral: You are stubborn, Witcher.");
 		System.out.println("Nithral: I wonder how long you'll last...");

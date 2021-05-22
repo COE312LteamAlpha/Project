@@ -16,9 +16,13 @@ public class Player extends Characters{
 		this.attack_level = 50;
 		this.bonus_attack = 15;
 		this.coins=50;
+		a_player[0] = new AttackPlayer();
+		a_player[1]=new SpellAttack();
+		a_player[2]=new ComboAttack();
 	}
 
-
+	
+	
 	public void pStats() {
 		System.out.print("Name: " + this.name +"\tCoins:"+this.coins+"\nPlayer stats: "
 				+"Attack level: "+ this.attack_level + "\tHealth level: " + this.health_level + "\tSpell Attack: " + this.bonus_attack);

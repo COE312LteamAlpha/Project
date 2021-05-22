@@ -7,7 +7,10 @@ public class AngryEredin extends Characters implements States{
 		this.attack_level = 100;
 		this.bonus_attack = 20;
 		this.isAlive=true;
+		a=new AttackEnemy();
 	}
+	
+	
 	
 	@Override
 	public void dialogueIntro(String s) {
@@ -58,4 +61,3 @@ public class AngryEredin extends Characters implements States{
 	
 
 }
-
