@@ -7,9 +7,11 @@ public class The_IceMountain implements Locations {
 
 	Player p;
 	int currMaxHP;
-	String curLoc;
+	//String curLoc;
 	Caranthir c = new Caranthir();
 	Scanner scan = new Scanner(System.in);
+	EnemyDialogues eD = new EnemyDialogues(The_Cave.curLoc);
+	UserDialogues uD = new UserDialogues(The_Cave.curLoc);
 	The_IceMountain(Player p){
 		this.p=p;
 		//this.c=c;
@@ -140,8 +142,8 @@ public class The_IceMountain implements Locations {
 					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
 				else if(option == 2) {
-					p.bonus_attack += 50;
-					p.health_level += 70;
+					p.bonus_attack += 12;
+					p.health_level += 7;
 					p.coins -= 35;
 					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
@@ -174,12 +176,6 @@ public class The_IceMountain implements Locations {
 		//create a variable in the UI which keeps the player's location
 	}
 
-	@Override
-	public boolean battles() {
-		// TODO Auto-generated method stub
-		
-		return false;
-	}
 
 	@Override
 	public void lookAround() {
@@ -226,9 +222,10 @@ public class The_IceMountain implements Locations {
 		int eHP = c.health_level;
 		if(c.isAlive == true){
 			System.out.println("Here's Caranthir!");
-			p.dialogueIntro("mountain");
-			c.dialogueIntro("mountain");
-			
+			//p.dialogueIntro("mountain");
+			//c.dialogueIntro("mountain");
+			uD.dialogueIntro();
+			eD.dialogueIntro();
 			System.out.println("Type begin to fight!!");
 			String fBegin="";
 			while(!fBegin.equals("begin")) {
@@ -248,8 +245,10 @@ public class The_IceMountain implements Locations {
 		}
 		if(uF.done == true) {
 			//lost to Caranthir
-			c.dialogueVictory("mountain");
-			p.dialogueDefeat("mountain");
+			//c.dialogueVictory("mountain");
+			//p.dialogueDefeat("mountain");
+			eD.dialogueVictory();
+			uD.dialogueDefeat();
 			p.health_level = this.currMaxHP;
 			c.health_level = eHP;
 		}
@@ -258,8 +257,10 @@ public class The_IceMountain implements Locations {
 			p.health_level+= 15;
 			p.attack_level+= 15;
 			p.coins+= 100;
-			p.dialogueVictory("mountain");
-			c.dialogueDefeat("mountain");
+			//p.dialogueVictory("mountain");
+			//c.dialogueDefeat("mountain");
+			uD.dialogueVictory();
+			eD.dialogueDefeat();
 			Skellige sK = new Skellige(p);
 			System.out.println("now entering Skellige");
 			SkelligeDraw();

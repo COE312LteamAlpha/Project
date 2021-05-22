@@ -57,10 +57,12 @@ public class TCP_C implements Runnable {
 		if(Xval>0.5) {
 			movement="right";
 			System.out.println("r");
+			bD.comboAttack();
 		}
 		else if(Xval<-0.5) {
 			movement="left";
 			System.out.println("l");
+			bD.comboAttack();
 		}
 		else if(Zval< -0.5) {
 			movement = "front";
@@ -73,7 +75,7 @@ public class TCP_C implements Runnable {
 		if(Aval > -2) {
 			spell=true;
 			bD.spellAttack();
-			System.out.println("a");
+			System.out.println("Igni!!");
 			Thread.sleep(10000);
 		}
 		

@@ -9,6 +9,8 @@ public class The_Cave implements Locations{
 	Nithral n = new Nithral();
 	static String curLoc="";
 	Scanner scan = new Scanner(System.in);
+	EnemyDialogues eD = new EnemyDialogues(curLoc);
+	UserDialogues uD = new UserDialogues(curLoc);
 	The_Cave(Player p){
 		this.p=p;
 		this.currMaxHP = p.health_level;
@@ -44,10 +46,10 @@ public class The_Cave implements Locations{
 				+ "");
 		
 		System.out.println("You can purchase armour sets from here: "
-		+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +50 \tHealth: +50"
-		+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +30 \tHealth: +75"
-		+ "\n3. Ursine Gear Set - 35 coins \t Attack: +25 \tHealth: +100"
-		+ "\nEnter option number to select \tType 4 to leave");
+				+ "\n1. Griffin Gear Set - 15 coins" + "\t Attack: +50 \tHealth: +50"
+				+ "\n2. Manticore Gear Set - 25 coins \t Spell bonus: +30 \tHealth: +75"
+				+ "\n3. Ursine Gear Set - 35 coins \t Attack: +25 \tHealth: +100"
+				+ "\nEnter option number to select \tType 4 to leave");
 		
 		//Scanner scan = new Scanner(System.in);
 		while(true) {
@@ -159,15 +161,7 @@ public class The_Cave implements Locations{
 		//create a variable in the UI which keeps the player's location
 	}
 
-	@Override
-	public boolean battles() {
-		// TODO Auto-generated method stub
-		p.dialogueIntro(curLoc);
-		n.dialogueIntro(curLoc);
-		//initiate fight 
-		
-		return false;
-	}
+	
 	public void map() {
 		System.out.println("\r\n"
 				+ "\r\n"
@@ -221,8 +215,10 @@ public class The_Cave implements Locations{
 					+"\n how very interesting.");
 			System.out.println("He mutters something that sounds like elven speech. Both of you get ready "
 					+"\n and assume your battle stances.");
-			p.dialogueIntro(curLoc);
-			n.dialogueIntro(curLoc);
+			//p.dialogueIntro(curLoc);
+			uD.dialogueIntro();
+			//n.dialogueIntro(curLoc);
+			eD.dialogueIntro();
 			System.out.println("Type begin to fight!!");
 			String fBegin="";
 			while(!fBegin.equals("begin")) {
@@ -244,8 +240,10 @@ public class The_Cave implements Locations{
 			p.health_level = this.currMaxHP;
 			n.health_level = eHP;
 			
-			n.dialogueVictory("cave");
-			p.dialogueDefeat("cave");
+			//n.dialogueVictory("cave");
+			//p.dialogueDefeat("cave");
+			eD.dialogueVictory();
+			uD.dialogueDefeat();
 		}
 		else if(eF.done == true) {
 			//won against Nithral
@@ -253,8 +251,11 @@ public class The_Cave implements Locations{
 			p.health_level+= 10;
 			p.attack_level+= 10;
 			p.coins+= 75;
-			p.dialogueVictory("cave");
-			n.dialogueDefeat("cave");
+			//p.dialogueVictory("cave");
+			//n.dialogueDefeat("cave");
+			eD.dialogueDefeat();
+			uD.dialogueVictory();
+			
 			System.out.println("now entering The Ice Mountain");
 			The_IceMountainDraw();
 			curLoc = "The Ice Mountain";
