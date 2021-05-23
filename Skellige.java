@@ -13,6 +13,7 @@ public class Skellige implements Locations{
 	EnemyDialogues eD = new EnemyDialogues("Skellige");
 	EnemyDialogues aeD = new EnemyDialogues("Skellige2");
 	UserDialogues uD = new UserDialogues("Skellige");
+	UserDialogues uD2 = new UserDialogues("Skellige2");
 	Skellige(Player p)
 	{
 		this.p=p;
@@ -258,6 +259,13 @@ public class Skellige implements Locations{
 				es.printStatus();
 				UserFight uF2 = new UserFight(p,ae,wT);
 				EnemyFight aeF = new EnemyFight(p,ae);
+				try {
+					uF2.get_thread().join();
+					aeF.get_thread().join();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				if(uF2.done == true) {
 					//lost to AngryEredin

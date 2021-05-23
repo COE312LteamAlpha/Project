@@ -40,6 +40,9 @@ public class UserDialogues extends Dialogues{
 		else if(locatioN.equals("Skellige")) {
 			System.out.println("Geralt: You said you had something to tell me?...");
 		}
+		else if(locatioN.equals("Skellige2")) {
+			System.out.println("Geralt: So what was it you wanted to say?");
+		}
 		
 		
 	}
@@ -47,8 +50,8 @@ public class UserDialogues extends Dialogues{
 	@Override
 	public void dialogueDefeat() {
 		// TODO Auto-generated method stub
-		System.out.println("You lose, but you managed to get away. Get stronger and \"\r\n"
-				+ "					+ \"challenge your opponent again!");
+		System.out.println("You lose, but you managed to get away. Get stronger and \r\n"
+				+ "challenge your opponent again!");
 		
 	}
 }
