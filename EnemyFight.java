@@ -1,6 +1,7 @@
 package proj1;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class EnemyFight implements Runnable{
 
@@ -11,6 +12,14 @@ public class EnemyFight implements Runnable{
 	Thread t1;
 	Random rand = new Random();
 	boolean done = false;
+	Scanner scan = new Scanner(System.in);
+	Action a=new Action();
+	
+	AttackCommand at=new AttackCommand(a);
+	DefenseCommand df= new DefenseCommand(a);
+	
+	Command[] cmds= {at,df};
+	OptionsPanel panel=new OptionsPanel(cmds);
 	
 	public EnemyFight(Player p,Nithral n) {
 		this.p=p;
@@ -66,7 +75,16 @@ public class EnemyFight implements Runnable{
 			}
 			else
 			{
-				battle.AttackPlayer();
+				System.out.println("Enter action to perform (attack/defend)");
+				String option= scan.nextLine();
+				if(option.equalsIgnoreCase("attack")) {
+					
+					panel.optionSelected(1);
+				}
+				else if(option.equalsIgnoreCase("defend")){
+					panel.optionSelected(2);
+				}
+				//battle.AttackPlayer();
 			}
 			try {
 				Thread.sleep(rand.nextInt(3000));
