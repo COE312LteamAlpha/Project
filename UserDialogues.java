@@ -11,10 +11,10 @@ public class UserDialogues extends Dialogues{
 		// TODO Auto-generated method stub 
 		if(locatioN.equals("The Cave"))
 		{
-			System.out.println(Player.name + ": Step aside. You can't beat me.");
+			System.out.println( "Geralt : Step aside. You can't beat me.");
 		}
 		else if(locatioN.equals("The Ice Mountain")) {
-			System.out.println(Player.name + ": I see you've been expecting me. I won't disappoint");
+			System.out.println("Geralt: I see you've been expecting me. I won't disappoint");
 			System.out.println("\n All you must know is that I won't stop until I kill your leader."
 					+ "\n You won't be alive to tell him that yourself though. ");
 		}
@@ -22,7 +22,7 @@ public class UserDialogues extends Dialogues{
 			System.out.println(": .....");
 		}
 		
-		System.out.println(": Step aside. You can't beat me.");
+		//System.out.println("Geralt: Step aside. You can't beat me.");
 	}
 
 	@Override
@@ -30,15 +30,15 @@ public class UserDialogues extends Dialogues{
 		// TODO Auto-generated method stub
 		if(locatioN.equals("The Cave"))
 		{
-			System.out.println(Player.name +": Seemed like I lasted long enough.");
+			System.out.println("Geralt : Seemed like I lasted long enough.");
 		}
 		else if(locatioN.equals("The Ice Mountain")) {
-			System.out.println(Player.name + ": DIE!!");
+			System.out.println("Geralt: DIE!!");
 			System.out.println("You slash Caranthir across his chest and leave a gaping fatal wound "
 					+ "\n and finally thurst your blade right through his chest to end the battle!");
 		}
 		else if(locatioN.equals("Skellige")) {
-			System.out.println(Player.name + ": What?...I should've expected this.");
+			System.out.println("Geralt: You said you had something to tell me?...");
 		}
 		
 		

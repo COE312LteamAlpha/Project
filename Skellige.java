@@ -10,9 +10,9 @@ public class Skellige implements Locations{
 	AngryEredin ae = new AngryEredin();
 	//String curLoc;
 	Scanner scan = new Scanner(System.in);
-	EnemyDialogues eD = new EnemyDialogues(The_Cave.curLoc);
+	EnemyDialogues eD = new EnemyDialogues("Skellige");
 	EnemyDialogues aeD = new EnemyDialogues("Skellige2");
-	UserDialogues uD = new UserDialogues(The_Cave.curLoc);
+	UserDialogues uD = new UserDialogues("Skellige");
 	Skellige(Player p)
 	{
 		this.p=p;
@@ -210,8 +210,8 @@ public class Skellige implements Locations{
 					+"\n faced thus far. This was it! The final battle!");
 			//p.dialogueIntro(The_Cave.curLoc);
 			//er.dialogueIntro(The_Cave.curLoc);
-			uD.dialogueIntro();
 			eD.dialogueIntro();
+			uD.dialogueIntro();
 			System.out.println("Type begin to fight!!");
 			String fBegin="";
 			while(!fBegin.equals("begin")) {
@@ -241,6 +241,10 @@ public class Skellige implements Locations{
 			else if(eF.done == true) {
 				//won against Eredin
 				//initiate AngryEredin
+				System.out.println("\n "+ p.name+ ": (pant) Said you had something to tell me. (pant)");
+				System.out.println("\n Eredin: (pant) Not yet! I said I'd say it as you die. "
+						+ " Don't get too cocky. You haven't beat me! "
+						+ "\n Eredin charges again!");
 				EredinStates es = new EredinStates();
 				es.nextState();
 				es.printStatus();
@@ -261,15 +265,34 @@ public class Skellige implements Locations{
 					p.attack_level+= 15;
 					p.coins+= 100;
 					Watch.tm=false;
-					System.out.println("The winner of this battle seemed to have been decided! But Eredin refused"
-							+"\n to lie down, pushing himself to his absolute limit to take one last stand! "
-							+"\n But he ultimately succumbed to his wounds and falls on his back.");
 					//p.dialogueVictory("skellige");
 					//er.dialogueDefeat("skellige");
 					aeD.dialogueDefeat();
 					uD.dialogueVictory();
 					
 					//add ending story
+					System.out.println("The winner of this battle seemed to have been decided! But Eredin refused"
+							+"\n to lie down, pushing himself to his absolute limit to take one last stand! "
+							+"\n But he ultimately succumbed to his wounds and falls on his back.");
+					System.out.println("\n It would seem that our protagonist was sent on a mission simply to save time "
+							+ "\n for the king and his daughter princess to make an escape. Our protagonist however, "
+							+ "\n realised he had a duty to fulfill as humanity's strongest fighter. Whether the money was"
+							+ "\n involved or not...he has protected his people. "
+							+ "\n At this moment, he felt no particular animosity towards the king. All he had was the "
+							+ "\n satisfaction of a job well done. While he thought about going after the king for his"
+							+ "\n recompense, he felt that he would be content going back to slaying the neighborhood "
+							+ "\n monsters for common folk for measly pay. Killing monsters and beasts, as he does best.");
+					System.out.println("\n There would always be more to our hero's story, but we leave the interpretation"
+							+ "\n of what happens next....up to the player, YOU.");
+					System.out.println("\n _________          _______    _______  _        ______  \r\n"
+							+ "\\__   __/|\\     /|(  ____ \\  (  ____ \\( (    /|(  __  \\ \r\n"
+							+ "   ) (   | )   ( || (    \\/  | (    \\/|  \\  ( || (  \\  )\r\n"
+							+ "   | |   | (___) || (__      | (__    |   \\ | || |   ) |\r\n"
+							+ "   | |   |  ___  ||  __)     |  __)   | (\\ \\) || |   | |\r\n"
+							+ "   | |   | (   ) || (        | (      | | \\   || |   ) |\r\n"
+							+ "   | |   | )   ( || (____/\\  | (____/\\| )  \\  || (__/  )\r\n"
+							+ "   )_(   |/     \\|(_______/  (_______/|/    )_)(______/ \r\n"
+							+ "");
 				}
 			}
 		}

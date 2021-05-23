@@ -59,7 +59,8 @@ public class EnemyDialogues extends Dialogues{
 		}
 		else if(locatioN.equals("Skellige")) {
 			System.out.println("Eredin: (laughs) You're skilled Witcher! More so than I'd hoped! I can't lie "
-					+ "I'm quite enjoying this! But all of this will be for nothing!!");
+					+ "I'm quite enjoying this! But all of this will be for nothing!! I wonder why you fight"
+					+ " with such tenacity..but your reasoning to me is not of concern.");
 			System.out.println("\n Eredin's face covered in blood seemed to grow even more demonic as he seemed "
 					+ "to have emptied his mind except for one single thought, and that was to kill the witcher.");
 		}

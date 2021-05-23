@@ -30,12 +30,12 @@ public class Kaer_Morhen implements Locations{
 		System.out.println("Wardrobe fun!");		
 	}
 
-	@Override
+/*	@Override
 	public boolean battles() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+*/
 	@Override
 	public void lookAround() {
 		// TODO Auto-generated method stub

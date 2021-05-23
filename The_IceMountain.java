@@ -10,8 +10,8 @@ public class The_IceMountain implements Locations {
 	//String curLoc;
 	Caranthir c = new Caranthir();
 	Scanner scan = new Scanner(System.in);
-	EnemyDialogues eD = new EnemyDialogues(The_Cave.curLoc);
-	UserDialogues uD = new UserDialogues(The_Cave.curLoc);
+	EnemyDialogues eD = new EnemyDialogues("The Ice Mountain");
+	UserDialogues uD = new UserDialogues("The Ice Mountain");
 	The_IceMountain(Player p){
 		this.p=p;
 		//this.c=c;
@@ -35,7 +35,19 @@ public class The_IceMountain implements Locations {
 	public void L_right() {
 		// TODO Auto-generated method stub
 		System.out.println("Here you can interact with the Chemist!\nThe chemist can heal the player fully and provide the player with potions. ");
-
+		System.out.println("  .        _________________________    .\r\n"
+				+ "           UUUUUUUUUUUUUUUUUUUUUUUUU         ()\r\n"
+				+ "     .     UUUUUUUUUUUUUUUUUUUUUUUUU ()  () (()\r\n"
+				+ "  _________UUUUUUUUUUUUUUUUUUUUUUUUU()())()))()\r\n"
+				+ "  UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU))\r\n"
+				+ "()UUUUUUUUUU|| ___ || ___ || ___ ||UUUUUUUUUU()\r\n"
+				+ "(()|__\\S/__||| ~|~ || ~|~ || ~|~ ||___\\S/__|()(\r\n"
+				+ "))(|-------||| \"\"\" || \"\"\" || \"\"\" ||  _____ |()(\r\n"
+				+ "(()|-------||| ___ ||/_º_\\|| ___ ||  ~|~|~ |(()\r\n"
+				+ ")))|-------||| ~|~ |||\"\"\"||| ~|~ ||  \"\"\"\"\" |)()\r\n"
+				+ "@@@@¯¯¯¯¯¯¯@||@@@@@|||'  |||@@@@@||@@@@@@@@@@@@\r\n"
+				+ "____  '`.  ___________| |______________________\r\n"
+				+ "");
 		System.out.println("You can purchase health/spell sets from here: "
 				+ "\n1. Invisibility Potion - 15 coins" 
 				+ "\n2. Speed Potion - 25 coins \t Spell Attack bonus: +15"
@@ -106,7 +118,7 @@ public class The_IceMountain implements Locations {
 					p.attack_level = 500;
 					p.health_level += 500;
 					p.coins -= 65;
-					System.out.println("Now you have the ability to upsize to giant (name of character controlled by player?)");
+					System.out.println("Now you have the ability to upsize to giant size potion");
 					p.potionsAv.add("Giant Size Potion");
 					System.out.println("Coins left: " + p.coins+ "\t Enter 6 to leave");
 				}
@@ -125,7 +137,30 @@ public class The_IceMountain implements Locations {
 	@Override
 	public void L_left() {
 		// TODO Auto-generated method stub
+		
 		System.out.println("Here you can interact with the trader!\nThe Trader can upgrade weapons or armours, fully developed potions/spells");
+		System.out.println("                           .----.\r\n"
+				+ "                           |-.-.|\r\n"
+				+ "         __________________|;-;-|__\r\n"
+				+ "       .'                  '----'  '.\r\n"
+				+ "      . \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\" .\r\n"
+				+ "     .   .\"\"\"\"\"\".   .--\"\"\"\"\"\"\"\"\"\"-,   .\r\n"
+				+ "    . \"\"\".       \"\"'  .--\"\"\"\"\"--.. \"\"\" .\r\n"
+				+ "   .\"\"\"\"\"'-\"\"\"\"\"-  .-'   |\"|\"|   .'\"\"\"\"\".\r\n"
+				+ "  .   .''.'.     .'      |\"|\"|    .      .\r\n"
+				+ "  '._( ()   \\\"\"\".  _     _\"\"\"  _   .____.'\r\n"
+				+ "    |.'.  ()'   ' --------------------.|\r\n"
+				+ "    ||  '--'\"\"\"\"\"'          |         ||\r\n"
+				+ "    ||    '.------'     |\"\"|\"\"|\"\"|    ||\r\n"
+				+ "    ||     |.-.-.||-----|--|--|--|----||\r\n"
+				+ "    ||     || | |||     |__|_-\"-_|    ||\r\n"
+				+ "    ||     ||_|_|||    .-\"-\" ()  '.   ||\r\n"
+				+ "    || .--.| [-] ||   .' ()     () .  ||\r\n"
+				+ "    |.'    '.    || .'\"\"\"\"\"\"\"\"\"\"\"\"\"'. ||\r\n"
+				+ "    |: ()   |    ||--\\mga   .   .  /---|\r\n"
+				+ "    /    () \\____||___\\___________/____|\r\n"
+				+ "    '-------'\r\n"
+				+ "");
 		System.out.println("You can upgrade weapons or armours, fully developed potions/spells here: "
 				+ "\n1. Griffin Gear Upgrade Set - 30 coins" + "\t Attack: +50 \tHealth: +40"
 				+ "\n2. Manticore Gear Upgrade Set - 35 coins \t Spell bonus: +50 \tHealth: +70"
@@ -224,8 +259,8 @@ public class The_IceMountain implements Locations {
 			System.out.println("Here's Caranthir!");
 			//p.dialogueIntro("mountain");
 			//c.dialogueIntro("mountain");
-			uD.dialogueIntro();
 			eD.dialogueIntro();
+			uD.dialogueIntro();
 			System.out.println("Type begin to fight!!");
 			String fBegin="";
 			while(!fBegin.equals("begin")) {

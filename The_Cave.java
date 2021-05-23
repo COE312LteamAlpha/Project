@@ -7,7 +7,7 @@ public class The_Cave implements Locations{
 	Player p;
 	int currMaxHP;
 	Nithral n = new Nithral();
-	static String curLoc="";
+	static String curLoc="The Cave";
 	Scanner scan = new Scanner(System.in);
 	EnemyDialogues eD = new EnemyDialogues(curLoc);
 	UserDialogues uD = new UserDialogues(curLoc);

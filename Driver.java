@@ -10,16 +10,14 @@ public class Driver {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter name: ");
-		String pname = sc.next();
-		Player player = new Player(pname);
+		Player player = new Player();
 		The_Cave  tC = new The_Cave(player);
 		The_IceMountain tIM = new The_IceMountain(player);
 		Skellige sK = new Skellige(player);
 
-		System.out.println("Welcome " + pname+ "!\n\t\tGame begins: " + "\nPlayer stats: "+ "\tCoins:"+player.coins
+		System.out.println("Welcome! " + "\n\t\tGame begins: " + "\nPlayer stats: "+ "\tCoins:"+player.coins
 				+"\tAttack level: "+ player.attack_level + "\tHealth level: " + player.health_level);
-		System.out.println("You are a Witcher. A human weapon who has gone through immense mutations and training to be strong"
+		System.out.println("You are a Geralt, a Witcher. A human weapon who has gone through immense mutations and training to be strong"
 				+ "\n enough to take on deadly monsters single handely. You've been tasked with eliminating three other worldly "
 				+ "\n elves who threaten to" +
 				" wipe out humanity unless they submit into sacrificing their royal elder-blooded princess "
