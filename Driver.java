@@ -55,7 +55,8 @@ public class Driver {
 				+ "          #%#//####*  #######((% (%%%(  \r\n"
 				+ "          #######%#    ######,#% #%#((");
 		
-		System.out.println("\n Now traveling to The Cave");
+		System.out.println("\n Now traveling to The Cave. Reports from the Kings army showed that a large"
+				+ "\n Wild Hunt battalion was last spotted. A travelling armorer and healer are around.");
 		The_Cave.curLoc = "The Cave";
 		tC.lookAround();
 		String[] commands = {"right","left","forth","back","quit","stats","use","map"};

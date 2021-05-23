@@ -34,6 +34,10 @@ public class The_IceMountain implements Locations {
 	@Override
 	public void L_right() {
 		// TODO Auto-generated method stub
+		System.out.println("As you head towards the mountain, you see small towns and villages ransacked"
+				+ " and people brutally murdered. This was unfortunately a clue that you were on the right path...\n");
+		System.out.println("You finally make it and find a small settlement with the the Wild Hunt battalion further on");
+		
 		System.out.println("Here you can interact with the Chemist!\nThe chemist can heal the player fully and provide the player with potions. ");
 		System.out.println("  .        _________________________    .\r\n"
 				+ "           UUUUUUUUUUUUUUUUUUUUUUUUU         ()\r\n"
@@ -306,6 +310,8 @@ public class The_IceMountain implements Locations {
 		else {
 			//goto location 3
 			Skellige sK = new Skellige(p);
+			System.out.println("You now head to Skellige, the largest island in the realm. There isn' t"
+					+ "much left of it to destroy, but the capital is definitely where Eredin is.");
 			System.out.println("now entering Skellige");
 			SkelligeDraw();
 			The_Cave.curLoc = "Skellige";

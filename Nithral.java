@@ -20,6 +20,7 @@ public class Nithral extends Characters{
 		
 	}
 	public void dialogueDefeat(String s) {
+		
 		System.out.println("Nithral yells out in pain for the last time as his body falls to the ground.\n" + 
 	"He says nothing as his body succumbs to the excessive loss of blood.");
 		

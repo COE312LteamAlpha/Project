@@ -171,7 +171,8 @@ public class Skellige implements Locations{
 	@Override
 	public void lookAround() {
 		// TODO Auto-generated method stub
-		System.out.println("welcome to Skellige");
+		System.out.println("You have reach the capital of Skellige, and find a small untouched town "
+				+ "\n not too far from where Eredin might be..");
 		System.out.println("To the right there's an Armourer, and to the left theres a Healer."
 				+ " And to theres an odd force to the front" + "\n\t (You can go right, left, forth or back)");
 
