@@ -79,10 +79,10 @@ public class EnemyFight implements Runnable{
 				String option= scan.nextLine();
 				if(option.equalsIgnoreCase("attack")) {
 					
-					panel.optionSelected(1);
+					panel.optionSelected(0);
 				}
 				else if(option.equalsIgnoreCase("defend")){
-					panel.optionSelected(2);
+					panel.optionSelected(1);
 				}
 				//battle.AttackPlayer();
 			}
